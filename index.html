@@ -3,15 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>حاسبة المرتبات والشفتات</title>
+  <title>حاسبة المرتبات والشفتات - شغل فور يو</title>
   <style>
     :root {
       --primary: #2563eb;
-      --primary-hover: #1d4ed8;
       --bg: #f8fafc;
-      --card-bg: #ffffff;
+      --card: #ffffff;
       --text: #1e293b;
-      --border: #e2e8f0;
     }
     body {
       font-family: system-ui, -apple-system, sans-serif;
@@ -21,135 +19,121 @@
       padding: 15px;
       display: flex;
       justify-content: center;
-      align-items: center;
-      min-height: 100vh;
     }
-    .calculator-card {
-      background: var(--card-bg);
-      border-radius: 16px;
-      padding: 24px;
+    .container {
       width: 100%;
-      max-width: 450px;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      max-width: 480px;
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
     }
-    h2 {
-      text-align: center;
-      color: var(--primary);
-      margin-top: 0;
-      margin-bottom: 20px;
-    }
-    .input-group {
-      margin-bottom: 15px;
-    }
-    label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 6px;
-      font-size: 0.9em;
-    }
+    h2 { text-align: center; color: var(--primary); margin-top: 0; font-size: 1.3em; }
+    .input-group { margin-bottom: 12px; }
+    label { display: block; margin-bottom: 4px; font-weight: bold; font-size: 0.85em; }
     input {
       width: 100%;
-      padding: 12px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
       box-sizing: border-box;
-      font-size: 1em;
-    }
-    .buttons {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
+      font-size: 0.95em;
     }
     button {
-      flex: 1;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      font-size: 1em;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .btn-calc {
+      width: 100%;
       background-color: var(--primary);
       color: white;
-    }
-    .btn-reset {
-      background-color: #ef4444;
-      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 10px;
     }
     .result {
-      margin-top: 20px;
-      padding: 15px;
+      margin-top: 15px;
+      padding: 12px;
       background-color: #f1f5f9;
-      border-radius: 8px;
-      font-weight: bold;
+      border-radius: 6px;
+      display: none;
+    }
+    .result p { margin: 6px 0; font-size: 0.9em; }
+    .highlight { font-weight: bold; color: #16a34a; font-size: 1.1em; }
+    .brand-section {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #e2e8f0;
       text-align: center;
-      font-size: 1.1em;
     }
   </style>
 </head>
 <body>
 
-<div class="calculator-card">
-  <h2>حاسبة المرتبات والشفتات</h2>
+<div class="container">
+  <h2>🧮 حاسبة المرتبات والشفتات</h2>
   
   <div class="input-group">
-    <label>عدد الساعات الأساسية</label>
-    <input type="number" id="baseHours" placeholder="مثال: 8">
+    <label>المرتب الأساسي (جنيه):</label>
+    <input type="number" id="baseSalary" placeholder="مثال: 5000">
   </div>
-  
+
   <div class="input-group">
-    <label>قيمة الساعة الأساسية (جنية)</label>
-    <input type="number" id="hourlyRate" placeholder="مثال: 20">
+    <label>ساعات الأوفر تايم الإضافية:</label>
+    <input type="number" id="overtimeHours" placeholder="مثال: 10">
   </div>
-  
+
   <div class="input-group">
-    <label>ساعات الأوفر تايم النهارية (×1.5)</label>
-    <input type="number" id="dayOvertime" placeholder="مثال: 2">
+    <label>بدل الوجبة والمواصفات (إن وجد):</label>
+    <input type="number" id="allowances" placeholder="مثال: 500">
   </div>
-  
+
   <div class="input-group">
-    <label>ساعات الشفت الليلي (×1.75)</label>
-    <input type="number" id="nightShift" placeholder="مثال: 3">
+    <label>الخصومات أو التأمينات (جنيه):</label>
+    <input type="number" id="deductions" placeholder="مثال: 200">
   </div>
-  
-  <div class="input-group">
-    <label>إجمالي الخصومات (جنية)</label>
-    <input type="number" id="deductions" placeholder="مثال: 50">
+
+  <button onclick="calculateSalary()">احسب صافي المرتب</button>
+
+  <div class="result" id="resultBox">
+    <p>المرتب الأساسي: <span id="resBase">0</span> ج.م</p>
+    <p>أجر الأوفر تايم: <span id="resOvertime">0</span> ج.م</p>
+    <p>إجمالي البدلات: <span id="resAllowances">0</span> ج.م</p>
+    <p>الخصومات والتأمينات: <span id="resDeductions">0</span> ج.م</p>
+    <hr>
+    <p class="highlight">صافي القبض المتوقع: <span id="resNet">0</span> ج.م</p>
   </div>
-  
-  <div class="buttons">
-    <button class="btn-calc" onclick="calculateSalary()">حساب الصافي</button>
-    <button class="btn-reset" onclick="resetForm()">إعادة ضبط</button>
+
+  <!-- قسم شغل فور يو والوظائف -->
+  <div class="brand-section">
+    <h3 style="font-size: 1em; margin-bottom: 8px;">💼 أحدث وظائف المصانع والأمن</h3>
+    <p style="color: #64748b; font-size: 0.8em; margin-bottom: 10px;">تابع يومياً أحدث فرص العمل لعمال الإنتاج والأمن:</p>
+    <a href="https://www.facebook.com" target="_blank" style="display: inline-block; background-color: #1877f2; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: bold;">
+      تابع صفحة (شغل فور يو) على فيسبوك
+    </a>
   </div>
-  
-  <div class="result" id="resultBox">الصافي: 0 جنيه</div>
 </div>
 
 <script>
   function calculateSalary() {
-    const baseHours = parseFloat(document.getElementById('baseHours').value) || 0;
-    const hourlyRate = parseFloat(document.getElementById('hourlyRate').value) || 0;
-    const dayOvertime = parseFloat(document.getElementById('dayOvertime').value) || 0;
-    const nightShift = parseFloat(document.getElementById('nightShift').value) || 0;
+    const base = parseFloat(document.getElementById('baseSalary').value) || 0;
+    const overtimeHours = parseFloat(document.getElementById('overtimeHours').value) || 0;
+    const allowances = parseFloat(document.getElementById('allowances').value) || 0;
     const deductions = parseFloat(document.getElementById('deductions').value) || 0;
 
-    const baseSalary = baseHours * hourlyRate;
-    const dayOvertimePay = dayOvertime * hourlyRate * 1.5;
-    const nightShiftPay = nightShift * hourlyRate * 1.75;
+    // حساب قيمة ساعة الأوفر تايم (مستندة لـ 240 ساعة عمل شهرياً مفترضة)
+    const hourlyRate = base / 240;
+    const overtimePay = overtimeHours * hourlyRate * 1.35; // حساب الساعة بـ 1.35
 
-    const totalSalary = (baseSalary + dayOvertimePay + nightShiftPay) - deductions;
+    const netSalary = base + overtimePay + allowances - deductions;
 
-    document.getElementById('resultBox').innerText = 'الصافي النهائي: ' + totalSalary.toFixed(2) + ' جنيه';
-  }
+    document.getElementById('resBase').innerText = base.toFixed(2);
+    document.getElementById('resOvertime').innerText = overtimePay.toFixed(2);
+    document.getElementById('resAllowances').innerText = allowances.toFixed(2);
+    document.getElementById('resDeductions').innerText = deductions.toFixed(2);
+    document.getElementById('resNet').innerText = netSalary.toFixed(2);
 
-  function resetForm() {
-    document.getElementById('baseHours').value = '';
-    document.getElementById('hourlyRate').value = '';
-    document.getElementById('dayOvertime').value = '';
-    document.getElementById('nightShift').value = '';
-    document.getElementById('deductions').value = '';
-    document.getElementById('resultBox').innerText = 'الصافي: 0 جنيه';
+    document.getElementById('resultBox').style.display = 'block';
   }
 </script>
 
