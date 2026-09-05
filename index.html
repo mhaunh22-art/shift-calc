@@ -1,1 +1,157 @@
-"اكتب لي كود HTML و CSS و JavaScript كامل داخل ملف واحد لصفحة موقع ويب عربية ومريحة على الموبايل. الموقع عبارة عن حاسبة مرتبات وشفتات لعمال المصانع تحسب: عدد الساعات الأساسية، قيمة الساعة، ساعات الأوفر تايم النهارية (×1.5)، ساعات الشفت الليلي (×1.75)، والخصومات. اجعل التصميم عائماً ومبتكراً بأزرار واضحة مع زر لحساب الصافي وزر لإعادة الضبط."
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حاسبة المرتبات والشفتات</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --border: #e2e8f0;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .calculator-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 24px;
+      width: 100%;
+      max-width: 450px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+      color: var(--primary);
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+    .input-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 0.9em;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 1em;
+    }
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn-calc {
+      background-color: var(--primary);
+      color: white;
+    }
+    .btn-reset {
+      background-color: #ef4444;
+      color: white;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f1f5f9;
+      border-radius: 8px;
+      font-weight: bold;
+      text-align: center;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+
+<div class="calculator-card">
+  <h2>حاسبة المرتبات والشفتات</h2>
+  
+  <div class="input-group">
+    <label>عدد الساعات الأساسية</label>
+    <input type="number" id="baseHours" placeholder="مثال: 8">
+  </div>
+  
+  <div class="input-group">
+    <label>قيمة الساعة الأساسية (جنية)</label>
+    <input type="number" id="hourlyRate" placeholder="مثال: 20">
+  </div>
+  
+  <div class="input-group">
+    <label>ساعات الأوفر تايم النهارية (×1.5)</label>
+    <input type="number" id="dayOvertime" placeholder="مثال: 2">
+  </div>
+  
+  <div class="input-group">
+    <label>ساعات الشفت الليلي (×1.75)</label>
+    <input type="number" id="nightShift" placeholder="مثال: 3">
+  </div>
+  
+  <div class="input-group">
+    <label>إجمالي الخصومات (جنية)</label>
+    <input type="number" id="deductions" placeholder="مثال: 50">
+  </div>
+  
+  <div class="buttons">
+    <button class="btn-calc" onclick="calculateSalary()">حساب الصافي</button>
+    <button class="btn-reset" onclick="resetForm()">إعادة ضبط</button>
+  </div>
+  
+  <div class="result" id="resultBox">الصافي: 0 جنيه</div>
+</div>
+
+<script>
+  function calculateSalary() {
+    const baseHours = parseFloat(document.getElementById('baseHours').value) || 0;
+    const hourlyRate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+    const dayOvertime = parseFloat(document.getElementById('dayOvertime').value) || 0;
+    const nightShift = parseFloat(document.getElementById('nightShift').value) || 0;
+    const deductions = parseFloat(document.getElementById('deductions').value) || 0;
+
+    const baseSalary = baseHours * hourlyRate;
+    const dayOvertimePay = dayOvertime * hourlyRate * 1.5;
+    const nightShiftPay = nightShift * hourlyRate * 1.75;
+
+    const totalSalary = (baseSalary + dayOvertimePay + nightShiftPay) - deductions;
+
+    document.getElementById('resultBox').innerText = 'الصافي النهائي: ' + totalSalary.toFixed(2) + ' جنيه';
+  }
+
+  function resetForm() {
+    document.getElementById('baseHours').value = '';
+    document.getElementById('hourlyRate').value = '';
+    document.getElementById('dayOvertime').value = '';
+    document.getElementById('nightShift').value = '';
+    document.getElementById('deductions').value = '';
+    document.getElementById('resultBox').innerText = 'الصافي: 0 جنيه';
+  }
+</script>
+
+</body>
+</html>
