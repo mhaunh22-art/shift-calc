@@ -1,140 +1,234 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>حاسبة المرتبات والشفتات - شغل فور يو</title>
-  <style>
-    :root {
-      --primary: #2563eb;
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text: #1e293b;
-    }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      margin: 0;
-      padding: 15px;
-      display: flex;
-      justify-content: center;
-    }
-    .container {
-      width: 100%;
-      max-width: 480px;
-      background: var(--card);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-    }
-    h2 { text-align: center; color: var(--primary); margin-top: 0; font-size: 1.3em; }
-    .input-group { margin-bottom: 12px; }
-    label { display: block; margin-bottom: 4px; font-weight: bold; font-size: 0.85em; }
-    input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #cbd5e1;
-      border-radius: 6px;
-      box-sizing: border-box;
-      font-size: 0.95em;
-    }
-    button {
-      width: 100%;
-      background-color: var(--primary);
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 1em;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    .result {
-      margin-top: 15px;
-      padding: 12px;
-      background-color: #f1f5f9;
-      border-radius: 6px;
-      display: none;
-    }
-    .result p { margin: 6px 0; font-size: 0.9em; }
-    .highlight { font-weight: bold; color: #16a34a; font-size: 1.1em; }
-    .brand-section {
-      margin-top: 20px;
-      padding-top: 15px;
-      border-top: 1px solid #e2e8f0;
-      text-align: center;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة المرتبات والشفتات - شغل فور يو</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: var(--card);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        /* لافتة التوظيف */
+        .cta-banner {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .cta-banner h2 {
+            margin: 0 0 8px 0;
+            font-size: 1.1rem;
+        }
+
+        .cta-banner p {
+            margin: 0 0 12px 0;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: #10b981;
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .cta-btn:hover {
+            background-color: #059669;
+        }
+
+        /* الحاسبة */
+        h1 {
+            font-size: 1.3rem;
+            text-align: center;
+            color: #0f172a;
+            margin-top: 0;
+        }
+
+        .input-group {
+            margin-bottom: 12px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 0.95rem;
+        }
+
+        button.calc-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .results {
+            margin-top: 20px;
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .result-row.total {
+            border-top: 2px solid #cbd5e1;
+            padding-top: 8px;
+            font-weight: bold;
+            color: #0f172a;
+            font-size: 1.05rem;
+        }
+    </style>
 </head>
 <body>
 
 <div class="container">
-  <h2>🧮 حاسبة المرتبات والشفتات</h2>
-  
-  <div class="input-group">
-    <label>المرتب الأساسي (جنيه):</label>
-    <input type="number" id="baseSalary" placeholder="مثال: 5000">
-  </div>
+    <!-- بنر شغل فور يو للتوظيف -->
+    <div class="cta-banner">
+        <h2>تبحث عن فرصة عمل جديدة؟</h2>
+        <p>سجل بياناتك الآن في شركة شغل فور يو لنساعدك في إيجاد الوظيفة المناسبة مجاناً!</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScP_FORM_ID_HERE/viewform" target="_blank" class="cta-btn">سجل بياناتك الآن</a>
+    </div>
 
-  <div class="input-group">
-    <label>ساعات الأوفر تايم الإضافية:</label>
-    <input type="number" id="overtimeHours" placeholder="مثال: 10">
-  </div>
+    <h1>حاسبة المرتبات والشفتات</h1>
 
-  <div class="input-group">
-    <label>بدل الوجبة والمواصفات (إن وجد):</label>
-    <input type="number" id="allowances" placeholder="مثال: 500">
-  </div>
+    <div class="input-group">
+        <label>المرتب الأساسي (جنيه):</label>
+        <input type="number" id="baseSalary" placeholder="مثال: 4000">
+    </div>
 
-  <div class="input-group">
-    <label>الخصومات أو التأمينات (جنيه):</label>
-    <input type="number" id="deductions" placeholder="مثال: 200">
-  </div>
+    <div class="input-group">
+        <label>عدد أيام العمل الشهرية:</label>
+        <input type="number" id="workDays" value="26">
+    </div>
 
-  <button onclick="calculateSalary()">احسب صافي المرتب</button>
+    <div class="input-group">
+        <label>ساعات الشفت اليومي:</label>
+        <select id="shiftHours">
+            <option value="8">8 ساعات</option>
+            <option value="12">12 ساعة</option>
+        </select>
+    </div>
 
-  <div class="result" id="resultBox">
-    <p>المرتب الأساسي: <span id="resBase">0</span> ج.م</p>
-    <p>أجر الأوفر تايم: <span id="resOvertime">0</span> ج.م</p>
-    <p>إجمالي البدلات: <span id="resAllowances">0</span> ج.م</p>
-    <p>الخصومات والتأمينات: <span id="resDeductions">0</span> ج.م</p>
-    <hr>
-    <p class="highlight">صافي القبض المتوقع: <span id="resNet">0</span> ج.م</p>
-  </div>
+    <div class="input-group">
+        <label>ساعات الإضافي (Overtime):</label>
+        <input type="number" id="overtimeHours" value="0">
+    </div>
 
-  <!-- قسم شغل فور يو والوظائف -->
-  <div class="brand-section">
-    <h3 style="font-size: 1em; margin-bottom: 8px;">💼 أحدث وظائف المصانع والأمن</h3>
-    <p style="color: #64748b; font-size: 0.8em; margin-bottom: 10px;">تابع يومياً أحدث فرص العمل لعمال الإنتاج والأمن:</p>
-    <a href="https://www.facebook.com" target="_blank" style="display: inline-block; background-color: #1877f2; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: bold;">
-      تابع صفحة (شغل فور يو) على فيسبوك
-    </a>
-  </div>
+    <div class="input-group">
+        <label>أيام الغياب / الجزاءات:</label>
+        <input type="number" id="deductionDays" value="0">
+    </div>
+
+    <button class="calc-btn" onclick="calculateSalary()">حساب صافي المرتب</button>
+
+    <div class="results" id="resultsBlock">
+        <div class="result-row">
+            <span>أجر اليوم:</span>
+            <span id="dailyRate">0 جنيه</span>
+        </div>
+        <div class="result-row">
+            <span>أجر الساعة:</span>
+            <span id="hourlyRate">0 جنيه</span>
+        </div>
+        <div class="result-row">
+            <span>قيمة الإضافي:</span>
+            <span id="overtimePay">0 جنيه</span>
+        </div>
+        <div class="result-row">
+            <span>إجمالي الاستقطاعات:</span>
+            <span id="totalDeductions">0 جنيه</span>
+        </div>
+        <div class="result-row total">
+            <span>صافي المرتب المتوقع:</span>
+            <span id="netSalary">0 جنيه</span>
+        </div>
+    </div>
 </div>
 
 <script>
-  function calculateSalary() {
-    const base = parseFloat(document.getElementById('baseSalary').value) || 0;
-    const overtimeHours = parseFloat(document.getElementById('overtimeHours').value) || 0;
-    const allowances = parseFloat(document.getElementById('allowances').value) || 0;
-    const deductions = parseFloat(document.getElementById('deductions').value) || 0;
+    function calculateSalary() {
+        const base = parseFloat(document.getElementById('baseSalary').value) || 0;
+        const days = parseFloat(document.getElementById('workDays').value) || 26;
+        const shift = parseFloat(document.getElementById('shiftHours').value) || 8;
+        const overtime = parseFloat(document.getElementById('overtimeHours').value) || 0;
+        const deductions = parseFloat(document.getElementById('deductionDays').value) || 0;
 
-    // حساب قيمة ساعة الأوفر تايم (مستندة لـ 240 ساعة عمل شهرياً مفترضة)
-    const hourlyRate = base / 240;
-    const overtimePay = overtimeHours * hourlyRate * 1.35; // حساب الساعة بـ 1.35
+        if (base <= 0) {
+            alert('برجاء إدخال المرتب الأساسي');
+            return;
+        }
 
-    const netSalary = base + overtimePay + allowances - deductions;
+        const daily = base / days;
+        const hourly = daily / shift;
+        
+        // حساب الإضافي بحاسبة 1.35 لساعات النهار
+        const overtimeVal = overtime * hourly * 1.35;
+        const deductionsVal = deductions * daily;
+        
+        const net = base + overtimeVal - deductionsVal;
 
-    document.getElementById('resBase').innerText = base.toFixed(2);
-    document.getElementById('resOvertime').innerText = overtimePay.toFixed(2);
-    document.getElementById('resAllowances').innerText = allowances.toFixed(2);
-    document.getElementById('resDeductions').innerText = deductions.toFixed(2);
-    document.getElementById('resNet').innerText = netSalary.toFixed(2);
+        document.getElementById('dailyRate').innerText = daily.toFixed(2) + ' جنيه';
+        document.getElementById('hourlyRate').innerText = hourly.toFixed(2) + ' جنيه';
+        document.getElementById('overtimePay').innerText = overtimeVal.toFixed(2) + ' جنيه';
+        document.getElementById('totalDeductions').innerText = deductionsVal.toFixed(2) + ' جنيه';
+        document.getElementById('netSalary').innerText = net.toFixed(2) + ' جنيه';
 
-    document.getElementById('resultBox').style.display = 'block';
-  }
+        document.getElementById('resultsBlock').style.display = 'block';
+    }
 </script>
 
 </body>
