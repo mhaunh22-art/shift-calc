@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -16,8 +16,8 @@
         .divider { margin: 30px 0; border: 0; border-top: 1px solid #475569; }
         .note { font-size: 12px; color: #94a3b8; text-align: center; margin-top: 10px; }
         .badge { background: #22c55e; color: #fff; padding: 3px 8px; border-radius: 4px; font-size: 12px; display: inline-block; margin-bottom: 10px; }
-        .checkbox-group { margin-top: 8px; background: #0f172a; padding: 10px; border-radius: 6px; border: 1px solid #475569; }
-        .checkbox-group label { font-weight: normal; display: inline-block; margin-left: 15px; color: #e2e8f0; }
+        .checkbox-group { margin-top: 8px; background: #0f172a; padding: 12px; border-radius: 6px; border: 1px solid #475569; }
+        .checkbox-group label { font-weight: normal; display: inline-block; margin-left: 15px; color: #e2e8f0; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -26,7 +26,7 @@
     <h2>شغل فور يو 🛡️</h2>
     <h3>حاسبة أجور عمال المصانع</h3>
     
-    <!-- حاسبة المرتبات -->
+    <!-- قسم الحاسبة -->
     <div>
         <label for="basicSalary">المرتب الأساسي (أو الأجر الشهري):</label>
         <input type="number" id="basicSalary" placeholder="مثال: 5000">
@@ -51,64 +51,68 @@
 
     <hr class="divider">
 
-    <!-- الفورم الشامل بكل الاختيارات التفصيلية -->
+    <!-- قسم الفورم والتسجيل التفصيلي الكامل -->
     <div>
         <div style="text-align: center;">
             <span class="badge">بدون أي رسوم</span>
         </div>
-        <h3>استمارة التقديم الشاملة للوظائف</h3>
-        <p class="note">املأ التفاصيل والاختيارات أدناه ليتم اختيار الوظيفة المناسبة لك بدقة.</p>
+        <h3>استمارة التسجيل الكاملة للبحث عن عمل</h3>
+        <p class="note">املأ جميع بياناتك واختياراتك بدقة لكي يتم توجيهك للوظيفة المناسبة.</p>
 
-        <form action="#" method="POST" onsubmit="alert('تم إرسال بياناتك واختياراتك بنجاح!'); return false;">
+        <form action="#" method="POST" onsubmit="alert('تم إرسال استمارتك بنجاح وسيتم التواصل معك قريباً!'); return false;">
             <label for="fullName">الاسم الكامل:</label>
             <input type="text" id="fullName" placeholder="اكتب اسمك ثلاثي هنا" required>
 
-            <label for="phone">رقم الواتساب للتواصل:</label>
+            <label for="phone">رقم الهاتف الأساسي:</label>
             <input type="tel" id="phone" placeholder="01xxxxxxxx" required>
 
-            <label for="governorate">المحافظة / المدينة:</label>
+            <label for="whatsapp">رقم الواتساب للتواصل:</label>
+            <input type="tel" id="whatsapp" placeholder="01xxxxxxxx (إن أمكن)" required>
+
+            <label for="governorate">المحافظة / المدينة / المنطقة:</label>
             <input type="text" id="governorate" placeholder="مثال: القليوبية، شبرا الخيمة، العاشر من رمضان" required>
 
-            <label for="jobCategory">المجال المطلوب بالتفصيل:</label>
+            <label for="jobCategory">المجال أو التخصص المطلوب:</label>
             <select id="jobCategory" required>
                 <option value="">اختر المجال المناسب...</option>
-                <option value="press">عامل مكبس / تشكيل</option>
-                <option value="packaging">عامل تغليف وتعبئة</option>
-                <option value="production_line">عامل خط إنتاج عام</option>
-                <option value="security">أمن وحراسة (بشفتات أو إقامة)</option>
-                <option value="tech_mech">فني ميكانيكا / صيانة</option>
-                <option value="tech_elect">فني كهرباء / كنترول</option>
+                <option value="production">عامل إنتاج ومصانع (مكبس، تغليف، خطوط إنتاج)</option>
+                <option value="security">أمن وحراسة</option>
+                <option value="technician">فني صيانة / ميكانيكا أو كهرباء</option>
                 <option value="driver">سائق (رخصة مهنية)</option>
                 <option value="warehouse">عامل مخازن / أمين عهدة</option>
+                <option value="sales">مبيعات وخدمة عملاء</option>
+                <option value="other">مجال آخر</option>
             </select>
 
-            <label for="experience">سنوات الخبرة في المجال:</label>
+            <label for="experience">سنوات الخبرة:</label>
             <select id="experience">
-                <option value="none">بدون خبرة (مبتدئ / تدريب)</option>
+                <option value="none">بدون خبرة (حديث التخرج / مبتدئ)</option>
                 <option value="1-2">من سنة إلى سنتين</option>
                 <option value="3-5">من 3 إلى 5 سنوات</option>
                 <option value="more">أكثر من 5 سنوات (خبير)</option>
             </select>
 
-            <label for="shiftPreference">نظام الشفتات المفضل لديك:</label>
+            <label for="shiftPreference">نظام الشفتات المفضل:</label>
             <select id="shiftPreference">
                 <option value="morning">شفت صباحي فقط</option>
                 <option value="night">شفت مسائي / ليلي فقط</option>
                 <option value="alternating">شفتات متناوبة (ليلي ونهاري)</option>
-                <option value="overtime_yes">أوافق على العمل الإضافي بانتظام</option>
+                <option value="overtime_yes">أوافق على العمل الإضافي</option>
+                <option value="any">أي نظام متاح</option>
             </select>
 
-            <label>المميزات المطلوبة أو المتاحة لديك (اختر ما يناسبك):</label>
+            <label>المميزات والخدمات المطلوبة:</label>
             <div class="checkbox-group">
                 <label><input type="checkbox"> يتوفر سكن للمغتربين</label><br>
-                <label><input type="checkbox"> توفير مواصلات أو وجبات</label><br>
+                <label><input type="checkbox"> توفير مواصلات أو بدل انتقال</label><br>
+                <label><input type="checkbox"> توفير وجبات أو بدل طعام</label><br>
                 <label><input type="checkbox"> تأمين اجتماعي وصحي</label>
             </div>
 
-            <label for="notes" style="margin-top: 15px;">ملاحظات أو استفسارات أخرى:</label>
-            <textarea id="notes" rows="3" placeholder="اكتب أي تفاصيل أخرى ترغب في إضافتها..."></textarea>
+            <label for="notes" style="margin-top: 15px;">ملاحظات إضافية (اختياري):</label>
+            <textarea id="notes" rows="3" placeholder="اكتب أي تفاصيل أخرى أو خبرات سابقة ترغب في توضيحها..."></textarea>
 
-            <button type="submit" style="background: #22c55e; color: #fff;">إرسال الاستمارة الكاملة</button>
+            <button type="submit" style="background: #22c55e; color: #fff;">إرسال الاستمارة الكاملة الآن</button>
         </form>
     </div>
 
@@ -132,4 +136,4 @@
 </script>
 
 </body>
-</html>ر
+</html>
