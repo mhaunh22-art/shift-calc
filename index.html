@@ -6,7 +6,7 @@
     <title>شغل فور يو - حاسبة الأجور وتسجيل الوظائف</title>
     <style>
         body { font-family: Tahoma, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 20px; }
-        .container { max-width: 600px; margin: 0 auto; background: #1e293b; padding: 25px; border-radius: 12px; border: 2px solid #d4af37; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .container { max-width: 600px; margin: 0 auto; background: #1e293b; padding: 25px; border-radius: 12px; border: 2px solid #d4af37; box-shadow: 0 4px 15px rgba(0,0,0,0.3); position: relative; }
         h2, h3 { text-align: center; color: #d4af37; margin-bottom: 15px; }
         label { display: block; margin-top: 12px; font-weight: bold; color: #cbd5e1; font-size: 14px; }
         input, select, textarea { width: 100%; padding: 10px; margin-top: 5px; border-radius: 6px; border: 1px solid #475569; background: #0f172a; color: #fff; box-sizing: border-box; font-size: 14px; }
@@ -25,6 +25,13 @@
         .feature-option input:checked ~ .feature-box { background: rgba(212, 175, 55, 0.15); border-color: #d4af37; color: #d4af37; font-weight: bold; box-shadow: 0 0 8px rgba(212,175,55,0.2); }
         .feature-box:hover { border-color: #94a3b8; }
         
+        /* زر الواتساب المباشر العائم */
+        .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background-color: #25d366; color: white; border-radius: 50px; padding: 10px 20px; text-decoration: none; font-weight: bold; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; z-index: 1000; transition: transform 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.05); background-color: #20ba5a; }
+
+        /* رسالة النجاح بعد التسجيل */
+        #successMessage { display: none; background: rgba(34, 197, 94, 0.15); border: 1px solid #22c55e; color: #22c55e; padding: 15px; border-radius: 6px; text-align: center; margin-top: 15px; font-weight: bold; line-height: 1.6; }
+
         @media (max-width: 480px) {
             .features-grid { grid-template-columns: 1fr; }
         }
@@ -69,7 +76,7 @@
         <h3>استمارة التسجيل الكاملة للبحث عن عمل</h3>
         <p class="note">املأ جميع بياناتك واختياراتك بدقة لكي يتم توجيهك للوظيفة المناسبة.</p>
 
-        <form action="#" method="POST" onsubmit="alert('تم إرسال استمارتك بنجاح وسيتم التواصل معك قريباً!'); return false;">
+        <form id="jobForm" onsubmit="handleFormSubmit(event)">
             <label for="fullName">الاسم الكامل:</label>
             <input type="text" id="fullName" placeholder="اكتب اسمك ثلاثي هنا" required>
 
@@ -115,7 +122,7 @@
             <select id="experience">
                 <option value="less_than_1">أقل من سنة / مبتدئ (بدون خبرة سابقة)</option>
                 <option value="1-2">من سنة إلى سنتين</option>
-.                <option value="3-5">من 3 إلى 5 سنوات</option>
+                <option value="3-5">من 3 إلى 5 سنوات</option>
                 <option value="more">أكثر من 5 سنوات (خبير ومحترف)</option>
             </select>
 
@@ -153,10 +160,21 @@
 
             <button type="submit" style="background: #22c55e; color: #fff;">إرسال الاستمارة الكاملة الآن</button>
         </form>
+
+        <!-- رسالة التأكيد بعد الإرسال -->
+        <div id="successMessage">
+            ✅ شكراً لك! تم استلام بياناتك بنجاح.<br>
+            فريق (شغل فور يو) يقوم بمراجعة تخصصك، وسيتم التواصل معك عبر الواتساب خلال 24 لـ 48 ساعة فور توفر فرصة مناسبة.
+        </div>
     </div>
 
     <p class="note" style="margin-top: 25px;">جميع خدماتنا وفرص العمل مجانية 100% وبدون أي رسوم.</p>
 </div>
+
+<!-- زر واتساب عائم للتواصل السريع (استبدل الأصفار برقمك الحقيقي) -->
+<a href="https://wa.me/201000000000" target="_blank" class="whatsapp-float">
+    💬 تواصل سريع واتساب
+</a>
 
 <script>
     function calculateSalary() {
@@ -171,6 +189,13 @@
         let resDiv = document.getElementById('salaryResult');
         resDiv.style.display = 'block';
         resDiv.innerHTML = `صافي المرتب المتوقع: <strong>${net.toFixed(2)} جنيه</strong><br><small style="color: #94a3b8;">(شامل الإضافي ومخصوم منه الجزاءات)</small>`;
+    }
+
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        document.getElementById('successMessage').style.display = 'block';
+        document.getElementById('jobForm').reset();
+        document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
     }
 </script>
 
