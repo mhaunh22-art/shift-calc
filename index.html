@@ -16,8 +16,18 @@
         .divider { margin: 30px 0; border: 0; border-top: 1px solid #475569; }
         .note { font-size: 12px; color: #94a3b8; text-align: center; margin-top: 10px; }
         .badge { background: #22c55e; color: #fff; padding: 3px 8px; border-radius: 4px; font-size: 12px; display: inline-block; margin-bottom: 10px; }
-        .checkbox-group { margin-top: 8px; background: #0f172a; padding: 12px; border-radius: 6px; border: 1px solid #475569; }
-        .checkbox-group label { font-weight: normal; display: inline-block; margin-left: 15px; color: #e2e8f0; cursor: pointer; }
+        
+        /* تنسيق أزرار الاختيار الحديثة للخدمات */
+        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 8px; }
+        .feature-option { position: relative; cursor: pointer; }
+        .feature-option input { position: absolute; opacity: 0; cursor: pointer; }
+        .feature-box { display: block; padding: 10px; background: #0f172a; border: 1px solid #475569; border-radius: 6px; text-align: center; font-size: 13px; color: #cbd5e1; transition: all 0.2s ease; user-select: none; }
+        .feature-option input:checked ~ .feature-box { background: rgba(212, 175, 55, 0.15); border-color: #d4af37; color: #d4af37; font-weight: bold; box-shadow: 0 0 8px rgba(212,175,55,0.2); }
+        .feature-box:hover { border-color: #94a3b8; }
+        
+        @media (max-width: 480px) {
+            .features-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -51,7 +61,7 @@
 
     <hr class="divider">
 
-    <!-- قسم الفورم والتسجيل التفصيلي الكامل -->
+    <!-- قسم الفورم والتسجيل التفصيلي -->
     <div>
         <div style="text-align: center;">
             <span class="badge">بدون أي رسوم</span>
@@ -75,21 +85,38 @@
             <label for="jobCategory">المجال أو التخصص المطلوب:</label>
             <select id="jobCategory" required>
                 <option value="">اختر المجال المناسب...</option>
-                <option value="production">عامل إنتاج ومصانع (مكبس، تغليف، خطوط إنتاج)</option>
-                <option value="security">أمن وحراسة</option>
-                <option value="technician">فني صيانة / ميكانيكا أو كهرباء</option>
-                <option value="driver">سائق (رخصة مهنية)</option>
-                <option value="warehouse">عامل مخازن / أمين عهدة</option>
+                <option value="press">عامل مكبس / تشكيل معادن أو بلاستيك</option>
+                <option value="packaging">عامل تغليف، تعبئة وفرز</option>
+                <option value="production_line">عامل خط إنتاج عام</option>
+                <option value="cnc">عامل CNC / تشغيل ماكينات حديثة</option>
+                <option value="forklift">سائق كلارك (معدات ثقيلة ومخازن)</option>
+                <option value="driver">سائق (رخصة مهنية أولى وثانية وثالثة)</option>
+                <option value="security">أمن وحراسة (بشفتات أو إقامة)</option>
+                <option value="tech_mech">فني ميكانيكا / صيانة خطوط</option>
+                <option value="tech_elect">فني كهرباء / كنترول</option>
+                <option value="welder">لحام / برشام / تركيبات</option>
+                <option value="warehouse">عامل مخازن / أمين عهدة / تحميل</option>
+                <option value="quality">عامل مراقبة جودة (فحص)</option>
                 <option value="sales">مبيعات وخدمة عملاء</option>
-                <option value="other">مجال آخر</option>
+                <option value="other">مجال آخر يحدد لاحقاً</option>
+            </select>
+
+            <label for="licenseStatus">هل لديك رخصة؟ (للسائقين والفنيين):</label>
+            <select id="licenseStatus">
+                <option value="none">لا توجد رخصة / غير مخصص</option>
+                <option value="forklift_license">رخصة قيادة كلارك معتمدة</option>
+                <option value="professional_1">رخصة قيادة مهنية (درجة أولى)</option>
+                <option value="professional_2">رخصة قيادة مهنية (درجة ثانية)</option>
+                <option value="professional_3">رخصة قيادة مهنية (درجة ثالثة)</option>
+                <option value="private">رخصة قيادة خاصة</option>
             </select>
 
             <label for="experience">سنوات الخبرة:</label>
             <select id="experience">
-                <option value="none">بدون خبرة (حديث التخرج / مبتدئ)</option>
+                <option value="less_than_1">أقل من سنة / مبتدئ (بدون خبرة سابقة)</option>
                 <option value="1-2">من سنة إلى سنتين</option>
-                <option value="3-5">من 3 إلى 5 سنوات</option>
-                <option value="more">أكثر من 5 سنوات (خبير)</option>
+.                <option value="3-5">من 3 إلى 5 سنوات</option>
+                <option value="more">أكثر من 5 سنوات (خبير ومحترف)</option>
             </select>
 
             <label for="shiftPreference">نظام الشفتات المفضل:</label>
@@ -102,11 +129,23 @@
             </select>
 
             <label>المميزات والخدمات المطلوبة:</label>
-            <div class="checkbox-group">
-                <label><input type="checkbox"> يتوفر سكن للمغتربين</label><br>
-                <label><input type="checkbox"> توفير مواصلات أو بدل انتقال</label><br>
-                <label><input type="checkbox"> توفير وجبات أو بدل طعام</label><br>
-                <label><input type="checkbox"> تأمين اجتماعي وصحي</label>
+            <div class="features-grid">
+                <label class="feature-option">
+                    <input type="checkbox">
+                    <span class="feature-box">🏠 سكن للمغتربين</span>
+                </label>
+                <label class="feature-option">
+                    <input type="checkbox">
+                    <span class="feature-box">🚌 مواصلات / بدل انتقال</span>
+                </label>
+                <label class="feature-option">
+                    <input type="checkbox">
+                    <span class="feature-box">🍲 وجبات / بدل طعام</span>
+                </label>
+                <label class="feature-option">
+                    <input type="checkbox">
+                    <span class="feature-box">🛡️ تأمين اجتماعي وصحي</span>
+                </label>
             </div>
 
             <label for="notes" style="margin-top: 15px;">ملاحظات إضافية (اختياري):</label>
