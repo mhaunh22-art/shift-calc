@@ -17,7 +17,7 @@
         .note { font-size: 12px; color: #94a3b8; text-align: center; margin-top: 10px; }
         .badge { background: #22c55e; color: #fff; padding: 3px 8px; border-radius: 4px; font-size: 12px; display: inline-block; margin-bottom: 10px; }
         
-        /* تنسيق جديد وشيك لقسم الوظائف المعروضة */
+        /* تنسيق قسم الوظائف المعروضة الشيك */
         .featured-jobs-card {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             border: 1px solid rgba(212, 175, 55, 0.4);
@@ -125,7 +125,7 @@
 
     <hr class="divider">
 
-    <!-- قسم الوظائف المعروضة والمطلوبة بتصميم شيك وجديد -->
+    <!-- قسم الوظائف المعروضة والمطلوبة -->
     <div class="featured-jobs-card">
         <div class="featured-jobs-title">
             🔥 أحدث الوظائف المعروضة والمطلوبة حالياً:
@@ -160,6 +160,9 @@
             <label for="fullName">الاسم الكامل:</label>
             <input type="text" id="fullName" placeholder="اكتب اسمك ثلاثي هنا" required>
 
+            <label for="age">السن (العمر):</label>
+            <input type="number" id="age" placeholder="مثال: 25" required>
+
             <label for="phone">رقم الهاتف الأساسي:</label>
             <input type="tel" id="phone" placeholder="01xxxxxxxx" required>
 
@@ -168,6 +171,28 @@
 
             <label for="governorate">المحافظة / المدينة / المنطقة:</label>
             <input type="text" id="governorate" placeholder="مثال: القليوبية، شبرا الخيمة، العاشر من رمضان" required>
+
+            <label for="militaryStatus">الموقف من التجنيد (الجيش):</label>
+            <select id="militaryStatus" onchange="toggleExemptionReason()" required>
+                <option value="">اختر الموقف العسكري...</option>
+                <option value="completed">أدى الخدمة العسكرية </option>
+                <option value="exempt_permanent">إعفاء نهائي</option>
+                <option value="exempt_temporary">إعفاء مؤقت</option>
+                 
+            </select>
+
+            <!-- خانة سبب الإعفاء (تظهر فقط عند اختيار إعفاء نهائي أو مؤقت) -->
+            <div id="exemptionReasonDiv" style="display: none; background: rgba(212, 175, 55, 0.05); border: 1px dashed #d4af37; padding: 10px; border-radius: 6px; margin-top: 8px;">
+                <label for="exemptionReason" style="margin-top: 0; color: #d4af37;">سبب الإعفاء بالتفصيل:</label>
+                <select id="exemptionReason">
+                    <option value="">اختر سبب الإعفاء...</option>
+                    <option value="only_son">وحيد والديه (أو العائل الوحيد)</option>
+                    <option value="medical">إعفاء طبي (لسباب صحية)</option>
+                    <option value="dual_citizenship">مزدوج الجنسية / مقيم بالخارج</option>
+                    <option value="student_delay">دراسة / تأجيل مؤقت</option>
+                    <option value="other_reason">سبب آخر</option>
+                </select>
+            </div>
 
             <label for="jobCategory">المجال أو التخصص المطلوب:</label>
             <select id="jobCategory" required>
@@ -244,7 +269,7 @@
         <!-- رسالة التأكيد والفحص الآلي الاحترافية -->
         <div id="successMessage">
             <strong>✅ تم استلام استمارة طلب العمل بنجاح!</strong>
-            جارِ الآن فحص بياناتك وخبراتك آلياً من خلال نظام (شغل فور يو) ومطابقتها مع أحدث الشفتات والفرص المتاحة. سيتم التواصل معك عبر الواتساب فور الانتهاء من مراجعة طلبك وتحديد الفرصة المناسبة لك.
+            جارِ الآن فحص بياناتك وخبراتك والموقف العسكري آلياً من خلال نظام (شغل فور يو) ومطابقتها مع أحدث الشفتات والفرص المتاحة. سيتم التواصل معك عبر الواتساب فور الانتهاء من مراجعة طلبك وتحديد الفرصة المناسبة لك.
         </div>
     </div>
 
@@ -271,10 +296,24 @@
         resDiv.innerHTML = `صافي المرتب المتوقع: <strong>${net.toFixed(2)} جنيه</strong><br><small style="color: #94a3b8;">(شامل الإضافي ومخصوم منه الجزاءات)</small>`;
     }
 
+    // دالة إظهار أو إخفاء خانة سبب الإعفاء بناءً على اختيار موقف التجنيد
+    function toggleExemptionReason() {
+        let status = document.getElementById('militaryStatus').value;
+        let exemptionDiv = document.getElementById('exemptionReasonDiv');
+        
+        if (status === 'exempt_permanent' || status === 'exempt_temporary') {
+            exemptionDiv.style.display = 'block';
+        } else {
+            exemptionDiv.style.display = 'none';
+            document.getElementById('exemptionReason').value = ''; // تفريغ الاختيار لو اتغيرت القائمة
+        }
+    }
+
     function handleFormSubmit(event) {
         event.preventDefault();
         document.getElementById('successMessage').style.display = 'block';
         document.getElementById('jobForm').reset();
+        document.getElementById('exemptionReasonDiv').style.display = 'none'; // إعادة إخفاء خانة الإعفاء عند إعادة التعيين
         document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
     }
 </script>
