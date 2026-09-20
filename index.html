@@ -29,8 +29,9 @@
         .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background-color: #25d366; color: white; border-radius: 50px; padding: 10px 20px; text-decoration: none; font-weight: bold; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; z-index: 1000; transition: transform 0.3s; }
         .whatsapp-float:hover { transform: scale(1.05); background-color: #20ba5a; }
 
-        /* رسالة النجاح بعد التسجيل */
-        #successMessage { display: none; background: rgba(34, 197, 94, 0.15); border: 1px solid #22c55e; color: #22c55e; padding: 15px; border-radius: 6px; text-align: center; margin-top: 15px; font-weight: bold; line-height: 1.6; }
+        /* رسالة النجاح والفحص الآلي بعد التسجيل */
+        #successMessage { display: none; background: rgba(34, 197, 94, 0.15); border: 1px solid #22c55e; color: #e2e8f0; padding: 18px; border-radius: 8px; margin-top: 15px; font-size: 14px; line-height: 1.7; text-align: right; }
+        #successMessage strong { color: #22c55e; display: block; font-size: 16px; margin-bottom: 8px; text-align: center; }
 
         @media (max-width: 480px) {
             .features-grid { grid-template-columns: 1fr; }
@@ -161,17 +162,17 @@
             <button type="submit" style="background: #22c55e; color: #fff;">إرسال الاستمارة الكاملة الآن</button>
         </form>
 
-        <!-- رسالة التأكيد بعد الإرسال -->
+        <!-- رسالة التأكيد والفحص الآلي الاحترافية -->
         <div id="successMessage">
-            ✅ شكراً لك! تم استلام بياناتك بنجاح.<br>
-            فريق (شغل فور يو) يقوم بمراجعة تخصصك، وسيتم التواصل معك عبر الواتساب خلال 24 لـ 48 ساعة فور توفر فرصة مناسبة.
+            <strong>✅ تم استلام استمارة طلب العمل بنجاح!</strong>
+            جارِ الآن فحص بياناتك وخبراتك آلياً من خلال نظام (شغل فور يو) ومطابقتها مع أحدث الشفتات والفرص المتاحة. سيتم التواصل معك عبر الواتساب فور الانتهاء من مراجعة طلبك وتحديد الفرصة المناسبة لك.
         </div>
     </div>
 
     <p class="note" style="margin-top: 25px;">جميع خدماتنا وفرص العمل مجانية 100% وبدون أي رسوم.</p>
 </div>
 
-<!-- زر واتساب عائم للتواصل السريع (استبدل الأصفار برقمك الحقيقي) -->
+<!-- زر واتساب عائم للتواصل السريع -->
 <a href="https://wa.me/201000000000" target="_blank" class="whatsapp-float">
     💬 تواصل سريع واتساب
 </a>
