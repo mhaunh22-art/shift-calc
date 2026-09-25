@@ -14,7 +14,6 @@
 
         .container { padding: 15px; max-width: 550px; margin: auto; }
         
-        /* الاستمارة الكبيرة والكاملة */
         .form-section { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #cbd5e1; margin-top: 10px; }
         .form-title { font-size: 17px; font-weight: bold; color: #0b2545; margin-bottom: 15px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; display: flex; align-items: center; gap: 8px; }
         
@@ -23,7 +22,11 @@
         .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 11px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; background: #fff; color: #0b2545; outline: none; }
         .form-group input:focus, .form-group select:focus { border-color: #16a34a; box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1); }
         
-        .submit-btn { background: #16a34a; color: white; border: none; padding: 14px; border-radius: 8px; width: 100%; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.2s; margin-top: 10px; }
+        .checkbox-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 5px; }
+        .checkbox-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #334155; cursor: pointer; }
+        .checkbox-item input { width: 16px; height: 16px; accent-color: #16a34a; }
+
+        .submit-btn { background: #16a34a; color: white; border: none; padding: 14px; border-radius: 8px; width: 100%; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.2s; margin-top: 15px; }
         .submit-btn:hover { background: #15803d; }
 
         .section-title { font-size: 15px; font-weight: bold; margin: 20px 0 10px; color: #0b2545; }
@@ -41,28 +44,33 @@
 
     <div class="container">
         
-        <!-- الاستمارة الطويلة الكاملة لبيانات التوظيف -->
         <div class="form-section">
-            <div class="form-title">📝 استمارة تسجيل بيانات العامل الكاملة</div>
-            <form onsubmit="event.preventDefault(); alert('تم حفظ بياناتك بنجاح في قاعدة البيانات وسيتم التواصل معك قريباً!');">
+            <div class="form-title">📝 استمارة تسجيل بيانات العامل الشاملة</div>
+            <form onsubmit="event.preventDefault(); alert('تم حفظ البيانات بنجاح! سيتم التواصل معك عبر الواتساب.');">
                 
                 <div class="form-group">
                     <label>الاسم الثلاثي (كما هو في البطاقة):</label>
                     <input type="text" placeholder="اكتب اسمك كاملاً" required>
                 </div>
 
+                <!-- خانة رقم الواتساب الأساسي -->
                 <div class="form-group">
-                    <label>رقم الموبايل (الرقم عليها واتساب):</label>
+                    <label>📱 رقم الواتساب الأساسي (مهم جداً للتواصل):</label>
                     <input type="tel" placeholder="01xxxxxxxx" required>
                 </div>
 
                 <div class="form-group">
-                    <label>السن:</label>
-                    <input type="number" placeholder="اكتب سنك بالسنوات" required>
+                    <label>رقم هاتف إضافي (اختياري):</label>
+                    <input type="tel" placeholder="01xxxxxxxx">
                 </div>
 
                 <div class="form-group">
-                    <label>المحافظة / المركز:</label>
+                    <label>السن:</label>
+                    <input type="number" placeholder="اكتب سنك بالأرقام" required>
+                </div>
+
+                <div class="form-group">
+                    <label>المحافظة / المركز / القرى:</label>
                     <input type="text" placeholder="مثال: القليوبية - شبرا الخيمة" required>
                 </div>
 
@@ -79,37 +87,59 @@
                 </div>
 
                 <div class="form-group">
-                    <label>سبب الإعفاء (في حال كان الموقف معفى):</label>
-                    <input type="text" placeholder="مثال: وحيد، إعفاء طبى، أكبر صحاب عائلة... (أو اكتب لا يوجد)">
+                    <label>سبب الإعفاء العسكري (إن وجد):</label>
+                    <input type="text" placeholder="مثال: وحيد، طبي، عائل أسرة... (أو اكتب لا يوجد)">
                 </div>
 
+                <!-- خانة الوظائف الطويلة المتنوعة المفصلة (سائق كلارك وكافة التخصصات) -->
                 <div class="form-group">
-                    <label>الخبرة السابقة في المصانع:</label>
+                    <label>🎯 الوظيفة المطلوبة (اختر التخصص بدقة):</label>
                     <select required>
-                        <option value="">-- هل توجد خبرة سابقة؟ --</option>
-                        <option value="بدون خبرة (جدي للتعلم)">بدون خبرة</option>
+                        <option value="">-- اختر الوظيفة أو المجال --</option>
                         <option value="عامل تعبئة وتغليف">عامل تعبئة وتغليف</option>
-                        <option value="فني إنتاج أو مكبس">فني إنتاج أو مكبس</option>
-                        <option value="سائق أو أمن">سائق أو أمن</option>
-                        <option value="مهنة أخرى">مهنة أخرى</option>
+                        <option value="عامل إنتاج مصانع">عامل إنتاج مصانع</option>
+                        <option value="فني مكابس وأسطمبات">فني مكابس وأسطمبات</option>
+                        <option value="فني صيانة ميكانيكية أو كهرباء">فني صيانة (ميكانيكا / كهرباء)</option>
+                        <option value="سائق كلارك (رخصة مهنية/خاصة)">سائق كلارك</option>
+                        <option value="سائق سيارة نقل / رخصة مهنية">سائق سيارة (نقل / مقطورة)</option>
+                        <option value="سائق رخصة خاصة">سائق (رخصة خاصة)</option>
+                        <option value="أمن وخدمات حراسة">أمن وخدمات حراسة</option>
+                        <option value="عامل مخازن وتحضير طلبات">عامل مخازن</option>
+                        <option value="عامل نظافة وخدمات">عامل خدمات ونظافة</option>
+                        <option value="أخرى / متنوع">أخرى (يتم تحديدها لاحقاً)</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>هل تحتاج سكن ومواصلات؟</label>
+                    <label>هل تحتاج سكن ومواصلات للمصنع؟</label>
                     <select required>
                         <option value="">-- اختر --</option>
-                        <option value="نعم, أحتاج سكن ومواصلات">نعم، أحتاج سكن ومواصلات</option>
-                        <option value="أحتاج مواصلات فقط">أحتاج مواصلات فقط</option>
-                        <option value="لا، مقيم بالقرب من المصانع">لا، مقيم بالقرب من المصانع</option>
+                        <option value="نعم، أحتاج سكن ومواصلات">نعم، أحتاج سكن ومواصلات</option>
+                        <option value="أحتاج مواصلات داخلية فقط">أحتاج مواصلات فقط</option>
+                        <option value="لا، مقيم بالقرب من المصانع">لا، مقيم بالقرب من مواقع العمل</option>
                     </select>
                 </div>
 
-                <button type="submit" class="submit-btn">إرسال البيانات واعتماد التسجيل 🚀</button>
+                <!-- خانة الوثائق والمستندات الكاملة -->
+                <div class="form-group">
+                    <label>📁 الوثائق والمستندات المتاحة معك حالياً:</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><input type="checkbox" name="docs" value="بطاقة سارية"> بطاقة سارية</label>
+                        <label class="checkbox-item"><input type="checkbox" name="docs" value="شهادة الجيش"> شهادة الجيش</label>
+                        <label class="checkbox-item"><input type="checkbox" name="docs" value="شهادة الميلاد"> شهادة الميلاد</label>
+                        <label class="checkbox-item"><input type="checkbox" name="docs" value="فيش جنائي"> فيش جنائي</label>
+                        <label class="checkbox-item"><input type="checkbox" name="docs" value="برنت تأمينات"> برنت تأمينات</label>
+                        <label class="checkbox-item"><input type="checkbox" name="docs" value="شهادة المؤهل"> شهادة المؤهل</label>
+                        <label class="checkbox-item"><input type="checkbox" name="docs" value="رخصة قيادة أو كلارك"> رخصة قيادة / كلارك</label>
+                        <label class="checkbox-item"><input type="checkbox" name="docs" value="كارت ميزة / بنك"> كارت ميزة / بنك</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">إرسال استمارة التسجيل الكاملة 🚀</button>
             </form>
         </div>
 
-        <div class="section-title">🔥 الوظائف المطلوبة حالياً</div>
+        <div class="section-title">🔥 الوظائف المتاحة حالياً عبر شغل فور يو</div>
         
         <div class="job-card">
             <div style="font-weight: bold; font-size: 14px; color: #0b2545;">عامل تعبئة وتغليف (العاشر من رمضان)</div>
@@ -117,7 +147,7 @@
         </div>
 
         <div class="job-card">
-            <div style="font-weight: bold; font-size: 14px; color: #0b2545;">فني مكبس وإنتاج (أكتوبر / العبور)</div>
+            <div style="font-weight: bold; font-size: 14px; color: #0b2545;">سائق كلارك وفنيين إنتاج (أكتوبر / العبور)</div>
             <div style="font-size: 12px; color: #64748b; margin-top: 3px;">🔹 خبرة أو بدون | تأمين صحي واجتماعي</div>
         </div>
 
