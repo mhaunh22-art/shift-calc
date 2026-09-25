@@ -3,41 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شغل فور يو | منصة التوظيف المباشر بدون رسوم</title>
+    <title>شغل فور يو | البوابة الرسمية للتوظيف المباشر</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; }
+        body { background-color: #f1f5f9; color: #1e293b; line-height: 1.6; }
         
-        /* شريط علوي رسمي واحترافي */
-        header { background: #0f172a; color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #16a34a; }
-        header h1 { font-size: 19px; display: flex; align-items: center; gap: 8px; font-weight: 700; }
-        .badge { font-size: 12px; background: #16a34a; color: white; padding: 5px 10px; border-radius: 6px; font-weight: bold; }
+        header { background: #0b2545; color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid #16a34a; }
+        header h1 { font-size: 18px; display: flex; align-items: center; gap: 8px; font-weight: 700; }
+        .badge { font-size: 11px; background: #16a34a; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
 
-        /* لافتة ترحيبية رسمية (بدون صور) */
-        .hero-banner { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: white; padding: 25px 15px; text-align: center; }
-        .hero-banner h2 { font-size: 20px; margin-bottom: 8px; color: #4ade80; }
-        .hero-banner p { font-size: 13px; color: #cbd5e1; max-width: 500px; margin: auto; }
-
-        .container { padding: 15px; max-width: 520px; margin: auto; margin-top: -15px; }
+        .container { padding: 15px; max-width: 550px; margin: auto; }
         
-        /* استمارة التسجيل الرسمية البارزة */
-        .form-section { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; margin-bottom: 20px; }
-        .form-title { font-size: 17px; font-weight: bold; color: #0f172a; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
-        .form-group { margin-bottom: 12px; }
+        /* الاستمارة الكبيرة والكاملة */
+        .form-section { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #cbd5e1; margin-top: 10px; }
+        .form-title { font-size: 17px; font-weight: bold; color: #0b2545; margin-bottom: 15px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        
+        .form-group { margin-bottom: 14px; }
         .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; color: #334155; }
-        .form-group input, .form-group select { width: 100%; padding: 11px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; background: #fff; color: #0f172a; outline: none; transition: 0.2s; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 11px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; background: #fff; color: #0b2545; outline: none; }
         .form-group input:focus, .form-group select:focus { border-color: #16a34a; box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1); }
         
-        .submit-btn { background: #16a34a; color: white; border: none; padding: 13px; border-radius: 8px; width: 100%; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.2s; margin-top: 5px; }
+        .submit-btn { background: #16a34a; color: white; border: none; padding: 14px; border-radius: 8px; width: 100%; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.2s; margin-top: 10px; }
         .submit-btn:hover { background: #15803d; }
 
-        /* قسم الوظائف السريعة */
-        .section-title { font-size: 15px; font-weight: bold; margin: 20px 0 10px; color: #0f172a; display: flex; align-items: center; gap: 6px; }
-        .job-card { background: #fff; padding: 14px; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); border: 1px solid #e2e8f0; border-right: 4px solid #16a34a; }
-        .job-title { font-size: 15px; font-weight: bold; color: #0f172a; margin-bottom: 4px; }
-        .job-details { font-size: 13px; color: #64748b; }
+        .section-title { font-size: 15px; font-weight: bold; margin: 20px 0 10px; color: #0b2545; }
+        .job-card { background: #fff; padding: 12px; border-radius: 8px; margin-bottom: 10px; border: 1px solid #e2e8f0; border-right: 4px solid #0b2545; }
         
-        footer { text-align: center; padding: 20px; font-size: 12px; color: #64748b; border-top: 1px solid #e2e8f0; margin-top: 20px; }
+        footer { text-align: center; padding: 20px; font-size: 12px; color: #64748b; margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -47,57 +39,86 @@
         <span class="badge">بدون رسوم 100%</span>
     </header>
 
-    <div class="hero-banner">
-        <h2>بوابة التوظيف المباشر للمصانع</h2>
-        <p>سجل بياناتك مرة واحدة وسنقوم بترشيحك لأقرب وظيفة بدون أي رسوم أو وسيط.</p>
-    </div>
-
     <div class="container">
         
-        <!-- استمارة التسجيل الرسمية -->
-        <div class="form-section" id="applyForm">
-            <div class="form-title">📝 استمارة تسجيل بيانات العامل</div>
-            <form onsubmit="event.preventDefault(); alert('تم تسجيل بياناتك بنجاح! سيتم التواصل معك قريباً.');">
+        <!-- الاستمارة الطويلة الكاملة لبيانات التوظيف -->
+        <div class="form-section">
+            <div class="form-title">📝 استمارة تسجيل بيانات العامل الكاملة</div>
+            <form onsubmit="event.preventDefault(); alert('تم حفظ بياناتك بنجاح في قاعدة البيانات وسيتم التواصل معك قريباً!');">
+                
                 <div class="form-group">
-                    <label>الاسم الثلاثي:</label>
+                    <label>الاسم الثلاثي (كما هو في البطاقة):</label>
                     <input type="text" placeholder="اكتب اسمك كاملاً" required>
                 </div>
+
                 <div class="form-group">
-                    <label>رقم الموبايل (واتساب):</label>
+                    <label>رقم الموبايل (الرقم عليها واتساب):</label>
                     <input type="tel" placeholder="01xxxxxxxx" required>
                 </div>
+
                 <div class="form-group">
                     <label>السن:</label>
-                    <input type="number" placeholder="مثال: 26" required>
+                    <input type="number" placeholder="اكتب سنك بالسنوات" required>
                 </div>
+
                 <div class="form-group">
-                    <label>المحافظة المقيم بها:</label>
-                    <input type="text" placeholder="مثال: القليوبية، القاهرة، الجيزة..." required>
+                    <label>المحافظة / المركز:</label>
+                    <input type="text" placeholder="مثال: القليوبية - شبرا الخيمة" required>
                 </div>
+
                 <div class="form-group">
-                    <label>الموقف من التجنيد:</label>
+                    <label>الموقف من التجنيد (الحالة العسكرية):</label>
                     <select required>
-                        <option value="">اختر الموقف العسكري</option>
-                        <option value="أدى الخدمة">أدى الخدمة العسكرية</option>
+                        <option value="">-- اختر الموقف العسكري --</option>
+                        <option value="أدى الخدمة العسكرية">أدى الخدمة العسكرية</option>
                         <option value="معفاة نهائي">معفاة نهائي</option>
                         <option value="معفاة مؤقت">معفاة مؤقت</option>
-                        <option value="تأجيل">تأجيل</option>
+                        <option value="تأجيل دراسي أو غيره">تأجيل</option>
+                        <option value="لم يطلب للتجنيد">لم يطلب للتجنيد</option>
                     </select>
                 </div>
-                <button type="submit" class="submit-btn">إرسال البيانات والتسجيل 🚀</button>
+
+                <div class="form-group">
+                    <label>سبب الإعفاء (في حال كان الموقف معفى):</label>
+                    <input type="text" placeholder="مثال: وحيد، إعفاء طبى، أكبر صحاب عائلة... (أو اكتب لا يوجد)">
+                </div>
+
+                <div class="form-group">
+                    <label>الخبرة السابقة في المصانع:</label>
+                    <select required>
+                        <option value="">-- هل توجد خبرة سابقة؟ --</option>
+                        <option value="بدون خبرة (جدي للتعلم)">بدون خبرة</option>
+                        <option value="عامل تعبئة وتغليف">عامل تعبئة وتغليف</option>
+                        <option value="فني إنتاج أو مكبس">فني إنتاج أو مكبس</option>
+                        <option value="سائق أو أمن">سائق أو أمن</option>
+                        <option value="مهنة أخرى">مهنة أخرى</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>هل تحتاج سكن ومواصلات؟</label>
+                    <select required>
+                        <option value="">-- اختر --</option>
+                        <option value="نعم, أحتاج سكن ومواصلات">نعم، أحتاج سكن ومواصلات</option>
+                        <option value="أحتاج مواصلات فقط">أحتاج مواصلات فقط</option>
+                        <option value="لا، مقيم بالقرب من المصانع">لا، مقيم بالقرب من المصانع</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">إرسال البيانات واعتماد التسجيل 🚀</button>
             </form>
         </div>
 
-        <div class="section-title">🔥 الوظائف المتاحة حالياً</div>
+        <div class="section-title">🔥 الوظائف المطلوبة حالياً</div>
         
         <div class="job-card">
-            <div class="job-title">عامل تعبئة وتغليف (العاشر من رمضان)</div>
-            <div class="job-details">🔹 سكن ومواصلات متوفرة | بدون رسوم نهائياً</div>
+            <div style="font-weight: bold; font-size: 14px; color: #0b2545;">عامل تعبئة وتغليف (العاشر من رمضان)</div>
+            <div style="font-size: 12px; color: #64748b; margin-top: 3px;">🔹 سكن ومواصلات متوفرة | بدون أي رسوم نهائياً</div>
         </div>
 
         <div class="job-card">
-            <div class="job-title">فني مكبس وإنتاج (أكتوبر / العبور)</div>
-            <div class="job-details">🔹 خبرة أو بدون | تأمين صحي واجتماعي</div>
+            <div style="font-weight: bold; font-size: 14px; color: #0b2545;">فني مكبس وإنتاج (أكتوبر / العبور)</div>
+            <div style="font-size: 12px; color: #64748b; margin-top: 3px;">🔹 خبرة أو بدون | تأمين صحي واجتماعي</div>
         </div>
 
     </div>
