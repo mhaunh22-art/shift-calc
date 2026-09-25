@@ -3,320 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شغل فور يو - حاسبة الأجور وتسجيل الوظائف</title>
+    <title>شغل فور يو | البوابة الأولى للتوظيف المباشر بدون رسوم</title>
     <style>
-        body { font-family: Tahoma, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 20px; }
-        .container { max-width: 600px; margin: 0 auto; background: #1e293b; padding: 25px; border-radius: 12px; border: 2px solid #d4af37; box-shadow: 0 4px 15px rgba(0,0,0,0.3); position: relative; }
-        h2, h3 { text-align: center; color: #d4af37; margin-bottom: 15px; }
-        label { display: block; margin-top: 12px; font-weight: bold; color: #cbd5e1; font-size: 14px; }
-        input, select, textarea { width: 100%; padding: 10px; margin-top: 5px; border-radius: 6px; border: 1px solid #475569; background: #0f172a; color: #fff; box-sizing: border-box; font-size: 14px; }
-        button { width: 100%; background: #d4af37; color: #0f172a; padding: 12px; border: none; border-radius: 6px; font-weight: bold; font-size: 16px; margin-top: 20px; cursor: pointer; transition: background 0.3s; }
-        button:hover { background: #b89728; }
-        .result { margin-top: 20px; padding: 15px; background: #0f172a; border-radius: 6px; border: 1px dashed #d4af37; text-align: center; font-size: 16px; }
-        .divider { margin: 30px 0; border: 0; border-top: 1px solid #475569; }
-        .note { font-size: 12px; color: #94a3b8; text-align: center; margin-top: 10px; }
-        .badge { background: #22c55e; color: #fff; padding: 3px 8px; border-radius: 4px; font-size: 12px; display: inline-block; margin-bottom: 10px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7f6; color: #333; line-height: 1.6; }
+        header { background: #0b2545; color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        header h1 { font-size: 20px; display: flex; align-items: center; gap: 8px; }
         
-        /* تنسيق قسم الوظائف المعروضة الشيك */
-        .featured-jobs-card {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-            box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.05);
-        }
-        .featured-jobs-title {
-            font-size: 15px;
-            color: #d4af37;
-            margin-bottom: 12px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding-bottom: 8px;
-        }
-        .job-card-item {
-            background: rgba(30, 41, 59, 0.7);
-            border: 1px solid #334155;
-            border-radius: 8px;
-            padding: 10px 12px;
-            margin-bottom: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.2s ease;
-        }
-        .job-card-item:hover {
-            border-color: #d4af37;
-            background: rgba(212, 175, 55, 0.05);
-            transform: translateX(-3px);
-        }
-        .job-card-item:last-child {
-            margin-bottom: 0;
-        }
-        .job-title-text {
-            font-size: 13px;
-            color: #f1f5f9;
-            font-weight: 500;
-        }
-        .job-tag-badge {
-            background: rgba(34, 197, 94, 0.15);
-            color: #4ade80;
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            padding: 3px 8px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: bold;
-            white-space: nowrap;
-        }
+        /* سلايدر الصور المتحركة */
+        .slider-container { width: 100%; height: 220px; position: relative; overflow: hidden; background: #000; }
+        .slide { width: 100%; height: 100%; position: absolute; opacity: 0; transition: opacity 1s ease-in-out; background-size: cover; background-position: center; display: flex; align-items: flex-end; }
+        .slide.active { opacity: 1; }
+        .slide-content { background: linear-gradient(transparent, rgba(0,0,0,0.8)); width: 100%; padding: 15px; color: white; text-align: center; }
+        .slide-content h3 { font-size: 18px; margin-bottom: 5px; color: #4ade80; }
+        .slide-content p { font-size: 13px; }
 
-        /* تنسيق أزرار الاختيار الحديثة للخدمات */
-        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 8px; }
-        .feature-option { position: relative; cursor: pointer; }
-        .feature-option input { position: absolute; opacity: 0; cursor: pointer; }
-        .feature-box { display: block; padding: 10px; background: #0f172a; border: 1px solid #475569; border-radius: 6px; text-align: center; font-size: 13px; color: #cbd5e1; transition: all 0.2s ease; user-select: none; }
-        .feature-option input:checked ~ .feature-box { background: rgba(212, 175, 55, 0.15); border-color: #d4af37; color: #d4af37; font-weight: bold; box-shadow: 0 0 8px rgba(212,175,55,0.2); }
-        .feature-box:hover { border-color: #94a3b8; }
+        .container { padding: 15px; max-width: 600px; margin: auto; }
         
-        /* زر الواتساب المباشر العائم */
-        .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background-color: #25d366; color: white; border-radius: 50px; padding: 10px 20px; text-decoration: none; font-weight: bold; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; z-index: 1000; transition: transform 0.3s; }
-        .whatsapp-float:hover { transform: scale(1.05); background-color: #20ba5a; }
+        /* أزرار الخدمات السريعة */
+        .actions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0; }
+        .action-card { background: #fff; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-decoration: none; color: #0b2545; font-weight: bold; border-right: 4px solid #134074; transition: 0.3s; }
+        .action-card:hover { background: #f0f4f8; }
 
-        /* رسالة النجاح والفحص الآلي بعد التسجيل */
-        #successMessage { display: none; background: rgba(34, 197, 94, 0.15); border: 1px solid #22c55e; color: #e2e8f0; padding: 18px; border-radius: 8px; margin-top: 15px; font-size: 14px; line-height: 1.7; text-align: right; }
-        #successMessage strong { color: #22c55e; display: block; font-size: 16px; margin-bottom: 8px; text-align: center; }
-
-        @media (max-width: 480px) {
-            .features-grid { grid-template-columns: 1fr; }
-            .job-card-item { flex-direction: column; align-items: flex-start; gap: 6px; }
-        }
+        /* قسم الوظائف */
+        .section-title { font-size: 16px; font-weight: bold; margin: 20px 0 10px; color: #134074; border-right: 3px solid #4ade80; padding-right: 8px; }
+        .job-card { background: #fff; padding: 15px; border-radius: 10px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .job-title { font-size: 16px; font-weight: bold; color: #0b2545; margin-bottom: 5px; }
+        .job-details { font-size: 13px; color: #64748b; margin-bottom: 10px; }
+        .apply-btn { background: #134074; color: white; border: none; padding: 8px 15px; border-radius: 5px; width: 100%; font-weight: bold; cursor: pointer; text-align: center; display: block; text-decoration: none; }
+        
+        /* استمارة التسجيل المصغرة */
+        .form-section { background: #fff; padding: 20px; border-radius: 10px; margin-top: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 5px; color: #333; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 5px; font-size: 14px; }
+        .submit-btn { background: #16a34a; color: white; border: none; padding: 12px; border-radius: 5px; width: 100%; font-weight: bold; font-size: 16px; cursor: pointer; }
+        
+        footer { text-align: center; padding: 20px; font-size: 12px; color: #94a3b8; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>شغل فور يو 🛡️</h2>
-    <h3>حاسبة أجور عمال المصانع</h3>
-    
-    <!-- قسم الحاسبة -->
-    <div>
-        <label for="basicSalary">المرتب الأساسي (أو الأجر الشهري):</label>
-        <input type="number" id="basicSalary" placeholder="مثال: 5000">
+    <header>
+        <h1>🛡️ شغل فور يو</h1>
+        <span style="font-size: 12px; background: #16a34a; padding: 4px 8px; border-radius: 4px;">بدون رسوم 100%</span>
+    </header>
 
-        <label for="overtimeHours">عدد ساعات الإضافي:</label>
-        <input type="number" id="overtimeHours" placeholder="عدد ساعات الإضافي">
-
-        <label for="shiftType">نوع الشفت:</label>
-        <select id="shiftType">
-            <option value="normal">شفت نهاري (عادي)</option>
-            <option value="night">شفت ليلي</option>
-            <option value="alternating">شفت متناوب (أسبوع وأسبوع)</option>
-        </select>
-
-        <label for="deductions">الخصومات أو الجزاءات:</label>
-        <input type="number" id="deductions" value="0">
-
-        <button onclick="calculateSalary()">احسب صافي المرتب الآن</button>
-
-        <div id="salaryResult" class="result" style="display:none;"></div>
-    </div>
-
-    <hr class="divider">
-
-    <!-- قسم الوظائف المعروضة والمطلوبة -->
-    <div class="featured-jobs-card">
-        <div class="featured-jobs-title">
-            🔥 أحدث الوظائف المعروضة والمطلوبة حالياً:
+    <!-- سلايدر الصور المتحركة -->
+    <div class="slider-container">
+        <div class="slide active" style="background-image: url('https://static.srpcdigital.com/styles/1037xauto/public/2022/08/17/egyindu.jpg.webp')">
+            <div class="slide-content">
+                <h3>أسرع وظائف المصانع في مصر</h3>
+                <p>عقود رسمية وتأمين وسكن متوفر بدون أي رسوم</p>
+            </div>
         </div>
-        <div>
-            <div class="job-card-item">
-                <span class="job-title-text">🏭 عامل تعبئة وتغليف (بالعاشر من رمضان)</span>
-                <span class="job-tag-badge">سكن + مواصلات</span>
-            </div>
-            <div class="job-card-item">
-                <span class="job-title-text">🚜 سائق كلارك (رخصة معتمدة للمخازن)</span>
-                <span class="job-tag-badge">مرتب مجزي</span>
-            </div>
-            <div class="job-card-item">
-                <span class="job-title-text">⚡ فني كهرباء خطوط إنتاج وتكييف</span>
-                <span class="job-tag-badge">تأمين صحي</span>
+        <div class="slide" style="background-image: url('https://eroglugarment.com/wp-content/uploads/2025/09/MEZ06198-scaled.jpg')">
+            <div class="slide-content">
+                <h3>انضم لأكبر شبكة عمالية</h3>
+                <p>سجل بياناتك مرة واحدة وهنوصلك بأقرب مصانع ليك</p>
             </div>
         </div>
     </div>
 
-    <hr class="divider">
-
-    <!-- قسم الفورم والتسجيل التفصيلي -->
-    <div>
-        <div style="text-align: center;">
-            <span class="badge">بدون أي رسوم</span>
-        </div>
-        <h3>استمارة التسجيل الكاملة للبحث عن عمل</h3>
-        <p class="note">املأ جميع بياناتك واختياراتك بدقة لكي يتم توجيهك للوظيفة المناسبة.</p>
-
-        <form id="jobForm" onsubmit="handleFormSubmit(event)">
-            <label for="fullName">الاسم الكامل:</label>
-            <input type="text" id="fullName" placeholder="اكتب اسمك ثلاثي هنا" required>
-
-            <label for="age">السن (العمر):</label>
-            <input type="number" id="age" placeholder="مثال: 25" required>
-
-            <label for="phone">رقم الهاتف الأساسي:</label>
-            <input type="tel" id="phone" placeholder="01xxxxxxxx" required>
-
-            <label for="whatsapp">رقم الواتساب للتواصل:</label>
-            <input type="tel" id="whatsapp" placeholder="01xxxxxxxx (إن أمكن)" required>
-
-            <label for="governorate">المحافظة / المدينة / المنطقة:</label>
-            <input type="text" id="governorate" placeholder="مثال: القليوبية، شبرا الخيمة، العاشر من رمضان" required>
-
-            <label for="militaryStatus">الموقف من التجنيد (الجيش):</label>
-            <select id="militaryStatus" onchange="toggleExemptionReason()" required>
-                <option value="">اختر الموقف العسكري...</option>
-                <option value="completed">أدى الخدمة العسكرية </option>
-                <option value="exempt_permanent">إعفاء نهائي</option>
-                <option value="exempt_temporary">إعفاء مؤقت</option>
-                 
-            </select>
-
-            <!-- خانة سبب الإعفاء (تظهر فقط عند اختيار إعفاء نهائي أو مؤقت) -->
-            <div id="exemptionReasonDiv" style="display: none; background: rgba(212, 175, 55, 0.05); border: 1px dashed #d4af37; padding: 10px; border-radius: 6px; margin-top: 8px;">
-                <label for="exemptionReason" style="margin-top: 0; color: #d4af37;">سبب الإعفاء بالتفصيل:</label>
-                <select id="exemptionReason">
-                    <option value="">اختر سبب الإعفاء...</option>
-                    <option value="only_son">وحيد والديه (أو العائل الوحيد)</option>
-                    <option value="medical">إعفاء طبي (لسباب صحية)</option>
-                    <option value="dual_citizenship">مزدوج الجنسية / مقيم بالخارج</option>
-                    <option value="student_delay">دراسة / تأجيل مؤقت</option>
-                    <option value="other_reason">سبب آخر</option>
-                </select>
-            </div>
-
-            <label for="jobCategory">المجال أو التخصص المطلوب:</label>
-            <select id="jobCategory" required>
-                <option value="">اختر المجال المناسب...</option>
-                <option value="press">عامل مكبس / تشكيل معادن أو بلاستيك</option>
-                <option value="packaging">عامل تغليف، تعبئة وفرز</option>
-                <option value="production_line">عامل خط إنتاج عام</option>
-                <option value="cnc">عامل CNC / تشغيل ماكينات حديثة</option>
-                <option value="forklift">سائق كلارك (معدات ثقيلة ومخازن)</option>
-                <option value="driver">سائق (رخصة مهنية أولى والثانية والثالثة)</option>
-                <option value="security">أمن وحراسة (بشفتات أو إقامة)</option>
-                <option value="tech_mech">فني ميكانيكا / صيانة خطوط</option>
-                <option value="tech_elect">فني كهرباء / كنترول</option>
-                <option value="welder">لحام / برشام / تركيبات</option>
-                <option value="warehouse">عامل مخازن / أمين عهدة / تحميل</option>
-                <option value="quality">عامل مراقبة جودة (فحص)</option>
-                <option value="sales">مبيعات وخدمة عملاء</option>
-                <option value="other">مجال آخر يحدد لاحقاً</option>
-            </select>
-
-            <label for="licenseStatus">هل لديك رخصة؟ (للسائقين والفنيين):</label>
-            <select id="licenseStatus">
-                <option value="none">لا توجد رخصة / غير مخصص</option>
-                <option value="forklift_license">رخصة قيادة كلارك معتمدة</option>
-                <option value="professional_1">رخصة قيادة مهنية (درجة أولى)</option>
-                <option value="professional_2">رخصة قيادة مهنية (درجة ثانية)</option>
-                <option value="professional_3">رخصة قيادة مهنية (درجة ثالثة)</option>
-                <option value="private">رخصة قيادة خاصة</option>
-            </select>
-
-            <label for="experience">سنوات الخبرة:</label>
-            <select id="experience">
-                <option value="less_than_1">أقل من سنة / مبتدئ (بدون خبرة سابقة)</option>
-                <option value="1-2">من سنة إلى سنتين</option>
-                <option value="3-5">من 3 إلى 5 سنوات</option>
-                <option value="more">أكثر من 5 سنوات (خبير ومحترف)</option>
-            </select>
-
-            <label for="shiftPreference">نظام الشفتات المفضل:</label>
-            <select id="shiftPreference">
-                <option value="morning">شفت صباحي فقط</option>
-                <option value="night">شفت مسائي / ليلي فقط</option>
-                <option value="alternating">شفتات متناوبة (ليلي ونهاري)</option>
-                <option value="overtime_yes">أوافق على العمل الإضافي</option>
-                <option value="any">أي نظام متاح</option>
-            </select>
-
-            <label>المميزات والخدمات المطلوبة:</label>
-            <div class="features-grid">
-                <label class="feature-option">
-                    <input type="checkbox">
-                    <span class="feature-box">🏠 سكن للمغتربين</span>
-                </label>
-                <label class="feature-option">
-                    <input type="checkbox">
-                    <span class="feature-box">🚌 مواصلات / بدل انتقال</span>
-                </label>
-                <label class="feature-option">
-                    <input type="checkbox">
-                    <span class="feature-box">🍲 وجبات / بدل طعام</span>
-                </label>
-                <label class="feature-option">
-                    <input type="checkbox">
-                    <span class="feature-box">🛡️ تأمين اجتماعي وصحي</span>
-                </label>
-            </div>
-
-            <label for="notes" style="margin-top: 15px;">ملاحظات إضافية (اختياري):</label>
-            <textarea id="notes" rows="3" placeholder="اكتب أي تفاصيل أخرى أو خبرات سابقة ترغب في توضيحها..."></textarea>
-
-            <button type="submit" style="background: #22c55e; color: #fff;">إرسال الاستمارة الكاملة الآن</button>
-        </form>
-
-        <!-- رسالة التأكيد والفحص الآلي الاحترافية -->
-        <div id="successMessage">
-            <strong>✅ تم استلام استمارة طلب العمل بنجاح!</strong>
-            جارِ الآن فحص بياناتك وخبراتك والموقف العسكري آلياً من خلال نظام (شغل فور يو) ومطابقتها مع أحدث الشفتات والفرص المتاحة. سيتم التواصل معك عبر الواتساب فور الانتهاء من مراجعة طلبك وتحديد الفرصة المناسبة لك.
-        </div>
-    </div>
-
-    <p class="note" style="margin-top: 25px;">جميع خدماتنا وفرص العمل مجانية 100% وبدون أي رسوم.</p>
-</div>
-
-<!-- زر واتساب عائم للتواصل السريع -->
-<a href="https://wa.me/201000000000" target="_blank" class="whatsapp-float">
-    💬 تواصل سريع واتساب
-</a>
-
-<script>
-    function calculateSalary() {
-        let basic = parseFloat(document.getElementById('basicSalary').value) || 0;
-        let overtime = parseFloat(document.getElementById('overtimeHours').value) || 0;
-        let deductions = parseFloat(document.getElementById('deductions').value) || 0;
+    <div class="container">
         
-        let hourRate = basic / 26 / 8; 
-        let overtimeTotal = overtime * hourRate * 1.35;
-        let net = basic + overtimeTotal - deductions;
+        <div class="actions-grid">
+            <a href="#applyForm" class="action-card">📝 استمارة التسجيل</a>
+            <a href="#jobsList" class="action-card">🔥 أحدث الوظائف</a>
+        </div>
 
-        let resDiv = document.getElementById('salaryResult');
-        resDiv.style.display = 'block';
-        resDiv.innerHTML = `صافي المرتب المتوقع: <strong>${net.toFixed(2)} جنيه</strong><br><small style="color: #94a3b8;">(شامل الإضافي ومخصوم منه الجزاءات)</small>`;
-    }
-
-    // دالة إظهار أو إخفاء خانة سبب الإعفاء بناءً على اختيار موقف التجنيد
-    function toggleExemptionReason() {
-        let status = document.getElementById('militaryStatus').value;
-        let exemptionDiv = document.getElementById('exemptionReasonDiv');
+        <div class="section-title" id="jobsList">أحدث الوظائف المتاحة اليوم</div>
         
-        if (status === 'exempt_permanent' || status === 'exempt_temporary') {
-            exemptionDiv.style.display = 'block';
-        } else {
-            exemptionDiv.style.display = 'none';
-            document.getElementById('exemptionReason').value = ''; // تفريغ الاختيار لو اتغيرت القائمة
-        }
-    }
+        <div class="job-card">
+            <div class="job-title">عامل تعبئة وتغليف (العاشر من رمضان)</div>
+            <div class="job-details">🔹 سكن ومواصلات متوفرة | بدون رسوم نهائياً</div>
+            <a href="#applyForm" class="apply-btn">قدم بياناتك للوظيفة</a>
+        </div>
 
-    function handleFormSubmit(event) {
-        event.preventDefault();
-        document.getElementById('successMessage').style.display = 'block';
-        document.getElementById('jobForm').reset();
-        document.getElementById('exemptionReasonDiv').style.display = 'none'; // إعادة إخفاء خانة الإعفاء عند إعادة التعيين
-        document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
-    }
-</script>
+        <div class="job-card">
+            <div class="job-title">فني مكبس وإنتاج (أكتوبر / العبور)</div>
+            <div class="job-details">🔹 خبرة أو بدون | تأمين صحي واجتماعي</div>
+            <a href="#applyForm" class="apply-btn">قدم بياناتك للوظيفة</a>
+        </div>
 
+        <!-- استمارة التسجيل للعمال -->
+        <div class="form-section" id="applyForm">
+            <div class="section-title" style="margin-top:0;">استمارة تسجيل البيانات الفورية</div>
+            <form onsubmit="event.preventDefault(); alert('تم تسجيل بياناتك بنجاح! سيتم إضافتك للدفعة القادمة.');">
+                <div class="form-group">
+                    <label>الاسم الثلاثي:</label>
+                    <input type="text" placeholder="اكتب اسمك هنا" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم الموبايل (واتساب):</label>
+                    <input type="tel" placeholder="01xxxxxxxx" required>
+                </div>
+                <div class="form-group">
+                    <label>السن:</label>
+                    <input type="number" placeholder="مثال: 25" required>
+                </div>
+                <div class="form-group">
+                    <label>الموقف من التجنيد:</label>
+                    <select required>
+                        <option value="">اختر الموقف العسكري</option>
+                        <option value="أدى الخدمة">أدى الخدمة العسكرية</option>
+                        <option value="معفاة نهائي">معفاة نهائي</option>
+                        <option value="معفاة مؤقت">معفاة مؤقت</option>
+                        <option value="تأجيل">تأجيل</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">إرسال البيانات فوراً 🚀</button>
+            </form>
+        </div>
+
+    </div>
+
+    <footer>
+        جميع الحقوق محفوظة © شغل فور يو 2026 - خدمة مجانية للشباب
+    </footer>
+
+    <script>
+        // كود تحريك السلايدر أوتوماتيك
+        let slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 3500);
+    </script>
 </body>
 </html>
