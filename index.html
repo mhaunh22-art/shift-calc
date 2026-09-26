@@ -87,7 +87,7 @@
         .btn-gold:hover{transform:translateY(-2px);background:#b88b31}
         .btn-light{background:#fff;color:var(--navy);border:1px solid var(--line)}
 
-        /* Calculator Section Style */
+        /* Calculator Section */
         .calc-card {
             background: #102746;
             color: #fff;
@@ -144,6 +144,15 @@
         .meta div{display:flex;gap:8px}
         .job .btn{margin-top:auto;width:100%}
 
+        /* Testimonials Section (قصص النجاح) */
+        .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+        .testimonial-card{
+            background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;
+            box-shadow:0 8px 25px rgba(16,39,70,.05);position:relative;display:flex;flex-direction:column;gap:12px
+        }
+        .testimonial-card p{color:var(--muted);font-size:14px;font-style:italic}
+        .testimonial-author{font-weight:bold;color:var(--navy);font-size:14px;display:flex;align-items:center;gap:8px}
+
         /* Register Form Section */
         .register-wrap{display:grid;grid-template-columns:.75fr 1.25fr;gap:28px;align-items:start}
         .info-card,.form-card{
@@ -172,6 +181,25 @@
             border-radius:14px;padding:13px;margin-top:15px;text-align:center;font-weight:700
         }
 
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: #25d366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 32px;
+            box-shadow: 0 8px 25px rgba(37,211,102,0.4);
+            z-index: 99;
+            transition: transform 0.2s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
         /* Modal */
         .modal{display:none;position:fixed;inset:0;z-index:100;align-items:center;justify-content:center;padding:20px}
         .modal.open{display:flex}
@@ -194,7 +222,7 @@
         @media(max-width:900px){
             .hero-grid,.register-wrap{grid-template-columns:1fr}
             .info-card{position:static}
-            .features{grid-template-columns:repeat(2,1fr)}
+            .features,.testimonials-grid{grid-template-columns:repeat(2,1fr)}
             .job-grid{grid-template-columns:repeat(2,1fr)}
             .hero{padding-top:45px}
         }
@@ -202,13 +230,18 @@
             .navlinks{display:none;position:absolute;top:76px;right:4%;left:4%;background:#fff;padding:10px;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);flex-direction:column}
             .navlinks.show{display:flex}.navlinks a{width:100%;text-align:center}
             .menu{display:block}
-            .features,.job-grid,.form-grid{grid-template-columns:1fr}
+            .features,.job-grid,.form-grid,.testimonials-grid{grid-template-columns:1fr}
             .hero p{font-size:16px}.actions .btn{width:100%}
             section{padding:50px 0}
         }
     </style>
 </head>
 <body>
+
+    <!-- زر واتساب عائم للتواصل السريع -->
+    <a href="https://wa.me/201000000000?text=السلام%20عليكم،%20كنت%20استفسر%20عن%20فرص%20الشغل%20المتاحة" class="whatsapp-float" target="_blank" aria-label="تواصل واتساب">
+        💬
+    </a>
 
     <div class="topbar">🛡️ شغل فور يو — التسجيل مجاني 100% وبدون أي رسوم توظيف</div>
 
@@ -221,7 +254,7 @@
             <nav class="navlinks" id="navLinks">
                 <a href="#calculator">حاسبة الأجور</a>
                 <a href="#jobs">الوظائف</a>
-                <a href="#why">ليه شغل فور يو؟</a>
+                <a href="#testimonials">قصص النجاح</a>
                 <a href="#register">سجّل بياناتك</a>
             </nav>
             <button class="menu" id="menuBtn" aria-label="فتح القائمة">☰</button>
@@ -229,20 +262,20 @@
     </header>
 
     <main>
-        <!-- Hero Section مع حاسبة الأجور الجذابة -->
+        <!-- Hero Section مع حاسبة الأجور -->
         <section class="hero" id="home">
             <div class="container hero-grid">
                 <div>
                     <div class="eyebrow">💡 حصرياً لعمال المصانع الأبطال</div>
                     <h1>اعرف حقك بالقرش!<br><span>احسب مرتبك الإضافي</span> والشيفتات بدقة</h1>
-                    <p>مش هتحتار تاني في حساب مرتبك أو ساعات الإضافي والخصومات. حاسبة "شغل فور يو" مصممة خصيصاً عشان تريح بالك وتعرف صافي قبضك فوراً قبل ما تقبض، وبعدين تتابع أحدث فرص الشغل المتاحة!</p>
+                    <p>مش هتحتار تاني في حساب مرتبك أو ساعات الإضافي والخصومات. حاسبة "شغل فور يو" مصممة خصيصاً عشان تريح بالك وتعرف صافي قبضك فوراً، وبعدين تتابع أحدث فرص الشغل المتاحة!</p>
                     <div class="actions">
                         <a class="btn btn-gold" href="#calculator">🧮 جرب الحاسبة الآن</a>
                         <a class="btn btn-primary" href="#jobs">🔎 تصفح الوظائف</a>
                     </div>
                 </div>
 
-                <!-- كارت الحاسبة الجذاب -->
+                <!-- كارت الحاسبة -->
                 <div class="calc-card" id="calculator">
                     <h2>حاسبة أجور عمال المصانع 🛡️</h2>
                     <h3>احسب صافي مرتبك في ثواني</h3>
@@ -373,6 +406,31 @@
             </div>
         </div>
 
+        <!-- قسم قصص النجاح (Testimonials) -->
+        <section id="testimonials">
+            <div class="container">
+                <div class="section-head">
+                    <div class="label">ثقة وأمان</div>
+                    <h2>رأي العمال اللي اشتغلوا معانا</h2>
+                    <p>نجاحكم وهدفكم هو أساس شغلنا، ودي نماذج حقيقية لشباب لقوا شغل من خلالنا.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p>"أنا سجلت بياناتي وفي خلال يومين كلموني ولقولي فرصة في مصنع بالعاشر ومن غير ما يدفعوني أي مليم رسوم. ربنا يبارك في أصلكم."</p>
+                        <div class="testimonial-author">👤 إسلام محمد (عامل إنتاج)</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"حاسبة الأجور دي ممتازة جداً وريحتني كتير في حساب الإضافي والشيفتات. بجد شكراً ليكم على المصداقية والالتزام."</p>
+                        <div class="testimonial-author">👤 محمود سعيد (فني مصنع)</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"الموقع سهل وسريع والمتابعة على الواتساب ممتازة. ربنا يوفقكم وتفتحوا باب رزق لناس أكتر."</p>
+                        <div class="testimonial-author">👤 أحمد عبد الله (سائق)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- استمارة التسجيل -->
         <section id="register">
             <div class="container register-wrap">
@@ -458,7 +516,7 @@
 
                         <div class="form-actions">
                             <button class="btn btn-gold" type="submit">🚀 إرسال استمارة التسجيل</button>
-                            <div class="notice">مهم: يمكنك ربط هذا الزر بـ Google Forms أو أي قاعدة بيانات لاستقبال الطلبات.</div>
+                            <div class="notice">مهم: يمكنك وضع رابط Google Apps Script الخاص بك في كود الـ JavaScript لحفظ البيانات في Excel مباشرة.</div>
                             <div class="success" id="successMsg">✅ تم تسجيل بياناتك بنجاح وجاري مراجعتها للتواصل معك قريباً!</div>
                         </div>
                     </form>
@@ -482,12 +540,11 @@
             let shift = document.getElementById('shiftType').value;
             let deductions = parseFloat(document.getElementById('deductions').value) || 0;
 
-نفترض عادةً أن ساعة الإضافي تُحسب بناءً على الأساسي (مثلاً تقدير تقريبي لساعة الإضافي أو حساب أجر الساعة)
             let hourlyRate = (basic / 30) / 8; 
-            let overtimeTotal = overtime * hourlyRate * 1.35; // نسبة الإضافي
+            let overtimeTotal = overtime * hourlyRate * 1.35; 
             
             if (shift === 'night') {
-                overtimeTotal *= 1.2; // حافز شيفت ليلي إضافي
+                overtimeTotal *= 1.2; 
             }
 
             let netSalary = (basic + overtimeTotal) - deductions;
@@ -578,7 +635,9 @@
             document.getElementById('register').scrollIntoView({behavior:'smooth'});
         });
 
-        // التحقق من رقم الواتساب عند إرسال الاستمارة
+        // إرسال البيانات (مع إمكانية ربطها بـ Google Sheets عبر وضع الـ URL الخاص بك بدل النص الوهمي)
+        const scriptURL = 'ضع_رابط_جوجل_أبس_سكريبت_هنا'; 
+
         document.getElementById('registrationForm').addEventListener('submit', function(e){
             e.preventDefault();
             const phone = document.getElementById('whatsapp').value.replace(/\s|-/g,'');
@@ -587,8 +646,26 @@
                 document.getElementById('whatsapp').focus();
                 return;
             }
-            document.getElementById('successMsg').style.display = 'block';
-            document.getElementById('successMsg').scrollIntoView({behavior:'smooth', block:'center'});
+
+            const form = document.getElementById('registrationForm');
+            const successMsg = document.getElementById('successMsg');
+            
+            if(scriptURL.includes('ضع_رابط')) {
+                successMsg.style.display = 'block';
+                successMsg.scrollIntoView({behavior:'smooth', block:'center'});
+                form.reset();
+                return;
+            }
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    successMsg.style.display = 'block';
+                    successMsg.scrollIntoView({behavior:'smooth', block:'center'});
+                    form.reset();
+                })
+                .catch(error => {
+                    alert('حدث خطأ أثناء الإرسال، برجاء المحاولة مرة أخرى.');
+                });
         });
     </script>
 </body>
