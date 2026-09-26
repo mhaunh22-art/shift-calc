@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="شغل فور يو - بوابة مجانية للتسجيل في فرص العمل بالمصانع وحاسبة الأجور الدقيقة.">
     <title>شغل فور يو | فرص العمل وحاسبة المرتبات</title>
+    <!-- استدعاء خط Cairo الجذاب والمريح للعين -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root{
             --navy:#102746;
@@ -24,7 +26,7 @@
         *{box-sizing:border-box;margin:0;padding:0}
         html{scroll-behavior:smooth}
         body{
-            font-family:"Tahoma","Segoe UI",Arial,sans-serif;
+            font-family:'Cairo', sans-serif; /* تطبيق الخط الجديد على الموقع بالكامل */
             background:var(--cream);
             color:var(--text);
             line-height:1.75;
@@ -35,7 +37,7 @@
         
         .topbar{
             background:var(--navy);color:#fff;font-size:14px;
-            padding:8px 0;text-align:center;font-weight: bold;
+            padding:8px 0;text-align:center;font-weight:900;
         }
         header{
             position:sticky;top:0;z-index:50;
@@ -71,11 +73,11 @@
         .eyebrow{
             display:inline-flex;align-items:center;gap:8px;
             background:#f0e8d9;color:var(--navy);padding:7px 13px;border-radius:999px;
-            font-weight:800;font-size:13px;margin-bottom:16px
+            font-weight:900;font-size:13px;margin-bottom:16px
         }
-        h1{font-size:clamp(32px,4vw,52px);line-height:1.15;color:var(--navy);margin-bottom:18px}
+        h1{font-size:clamp(30px,3.8vw,48px);line-height:1.25;color:var(--navy);margin-bottom:18px;font-weight:900;}
         h1 span{color:var(--gold)}
-        .hero p{font-size:18px;color:var(--muted);max-width:680px}
+        .hero p{font-size:17px;color:var(--muted);max-width:680px;font-weight:700;}
         .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
         .btn{
             border:0;cursor:pointer;border-radius:14px;padding:13px 20px;font-weight:900;
@@ -96,11 +98,11 @@
             box-shadow: 0 20px 50px rgba(16,39,70,0.3);
             border: 2px solid var(--gold);
         }
-        .calc-card h2, .calc-card h3 { text-align: center; color: var(--gold-2); margin-bottom: 10px; }
-        .calc-card label { display: block; margin-top: 12px; font-weight: bold; color: #cbd5e1; font-size: 14px; }
+        .calc-card h2, .calc-card h3 { text-align: center; color: var(--gold-2); margin-bottom: 10px; font-weight:900; }
+        .calc-card label { display: block; margin-top: 12px; font-weight: 700; color: #cbd5e1; font-size: 14px; }
         .calc-card input, .calc-card select { 
             width: 100%; padding: 11px; margin-top: 5px; border-radius: 10px; 
-            border: 1px solid #475569; background: #0f172a; color: #fff; outline: none;
+            border: 1px solid #475569; background: #0f172a; color: #fff; outline: none; font-weight:700;
         }
         .calc-card input:focus, .calc-card select:focus { border-color: var(--gold); }
         .calc-result { 
@@ -111,8 +113,8 @@
         section{padding:78px 0}
         .section-head{text-align:center;max-width:760px;margin:0 auto 35px}
         .section-head .label{color:var(--gold);font-weight:900;font-size:13px}
-        .section-head h2{color:var(--navy);font-size:clamp(28px,4vw,40px);margin:5px 0}
-        .section-head p{color:var(--muted)}
+        .section-head h2{color:var(--navy);font-size:clamp(28px,4vw,40px);margin:5px 0;font-weight:900}
+        .section-head p{color:var(--muted);font-weight:700}
         
         /* Features */
         .features{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -121,15 +123,16 @@
             box-shadow:0 8px 24px rgba(16,39,70,.05)
         }
         .icon{width:45px;height:45px;border-radius:13px;background:#f1eadc;display:grid;place-items:center;font-size:22px;margin-bottom:13px}
-        .feature h3{color:var(--navy);font-size:17px;margin-bottom:5px}.feature p{font-size:14px;color:var(--muted)}
+        .feature h3{color:var(--navy);font-size:17px;margin-bottom:5px;font-weight:900}
+        .feature p{font-size:14px;color:var(--muted)}
 
         /* Jobs Section */
         .jobs-section{background:var(--paper)}
         .job-tools{display:flex;gap:10px;justify-content:space-between;align-items:center;margin-bottom:22px;flex-wrap:wrap}
         .search{flex:1;min-width:230px;position:relative}
-        .search input{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:13px 44px 13px 14px;outline:0}
+        .search input{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:13px 44px 13px 14px;outline:0;font-weight:700}
         .search span{position:absolute;right:15px;top:14px;font-size:18px}
-        .filter{min-width:175px;border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px 13px;color:var(--navy);font-weight:700;outline:0}
+        .filter{min-width:175px;border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px 13px;color:var(--navy);font-weight:900;outline:0}
         
         .job-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
         .job{
@@ -137,21 +140,21 @@
             box-shadow:0 8px 25px rgba(16,39,70,.05);display:flex;flex-direction:column
         }
         .job-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-        .job h3{color:var(--navy);font-size:19px}
-        .badge{font-size:11px;background:#f1eadc;color:#7b5b18;padding:5px 9px;border-radius:999px;white-space:nowrap}
+        .job h3{color:var(--navy);font-size:19px;font-weight:900}
+        .badge{font-size:11px;background:#f1eadc;color:#7b5b18;padding:5px 9px;border-radius:999px;white-space:nowrap;font-weight:900}
         .job-company{color:var(--gold);font-size:13px;font-weight:900;margin-top:6px}
-        .meta{display:grid;gap:7px;margin:16px 0;color:var(--muted);font-size:14px}
+        .meta{display:grid;gap:7px;margin:16px 0;color:var(--muted);font-size:14px;font-weight:700}
         .meta div{display:flex;gap:8px}
         .job .btn{margin-top:auto;width:100%}
 
-        /* Testimonials Section (قصص النجاح) */
+        /* Testimonials Section */
         .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
         .testimonial-card{
             background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;
             box-shadow:0 8px 25px rgba(16,39,70,.05);position:relative;display:flex;flex-direction:column;gap:12px
         }
-        .testimonial-card p{color:var(--muted);font-size:14px;font-style:italic}
-        .testimonial-author{font-weight:bold;color:var(--navy);font-size:14px;display:flex;align-items:center;gap:8px}
+        .testimonial-card p{color:var(--muted);font-size:14px;font-style:italic;font-weight:700}
+        .testimonial-author{font-weight:900;color:var(--navy);font-size:14px;display:flex;align-items:center;gap:8px}
 
         /* Register Form Section */
         .register-wrap{display:grid;grid-template-columns:.75fr 1.25fr;gap:28px;align-items:start}
@@ -159,26 +162,26 @@
             background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow)
         }
         .info-card{background:var(--navy);color:#fff;position:sticky;top:95px}
-        .info-card h3{font-size:27px;margin-bottom:10px}
-        .info-card p{color:#d8e0e9}
-        .info-points{list-style:none;margin-top:20px;display:grid;gap:14px}
+        .info-card h3{font-size:27px;margin-bottom:10px;font-weight:900}
+        .info-card p{color:#d8e0e9;font-weight:700}
+        .info-points{list-style:none;margin-top:20px;display:grid;gap:14px;font-weight:700}
         .info-points li{display:flex;gap:10px}
-        .form-title{color:var(--navy);font-size:25px;margin-bottom:5px}
-        .form-sub{color:var(--muted);font-size:14px;margin-bottom:22px}
+        .form-title{color:var(--navy);font-size:25px;margin-bottom:5px;font-weight:900}
+        .form-sub{color:var(--muted);font-size:14px;margin-bottom:22px;font-weight:700}
         .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
         .field.full{grid-column:1/-1}
-        .form-card label{display:block;font-weight:800;color:var(--navy);font-size:14px;margin-bottom:6px}
+        .form-card label{display:block;font-weight:900;color:var(--navy);font-size:14px;margin-bottom:6px}
         .form-card input, .form-card select{
             width:100%;border:1px solid #ddd6ca;border-radius:12px;padding:12px 13px;
-            background:#fff;outline:none;transition:.2s
+            background:#fff;outline:none;transition:.2s;font-weight:700
         }
         .form-card input:focus,.form-card select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,154,59,.12)}
         .form-actions{margin-top:20px}
         .form-actions .btn{width:100%}
-        .notice{margin-top:12px;font-size:12px;color:var(--muted);text-align:center}
+        .notice{margin-top:12px;font-size:12px;color:var(--muted);text-align:center;font-weight:700}
         .success{
             display:none;background:#edf8f1;border:1px solid #cbe8d6;color:#286747;
-            border-radius:14px;padding:13px;margin-top:15px;text-align:center;font-weight:700
+            border-radius:14px;padding:13px;margin-top:15px;text-align:center;font-weight:900
         }
 
         /* Floating WhatsApp Button */
@@ -207,14 +210,14 @@
         .modal-box{position:relative;width:min(560px,100%);background:#fff;border-radius:26px;padding:30px;box-shadow:0 25px 80px rgba(0,0,0,.28);z-index:1}
         .modal-close{position:absolute;left:18px;top:14px;border:0;background:#f3eee5;color:var(--navy);width:36px;height:36px;border-radius:50%;font-size:25px;cursor:pointer}
         .modal-icon{width:62px;height:62px;background:#f1eadc;border-radius:18px;display:grid;place-items:center;font-size:30px;margin-bottom:15px}
-        .modal-box h2{color:var(--navy);font-size:26px;margin:10px 0 0}
+        .modal-box h2{color:var(--navy);font-size:26px;margin:10px 0 0;font-weight:900}
         .modal-company{color:var(--gold);font-weight:900;margin-bottom:18px}
         .detail-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
-        .detail-item{background:#faf8f3;border:1px solid var(--line);border-radius:13px;padding:11px;font-size:14px}
-        .modal-note{background:#f5f0e6;border-radius:13px;padding:12px;font-size:12px;color:var(--muted);margin-bottom:18px}
+        .detail-item{background:#faf8f3;border:1px solid var(--line);border-radius:13px;padding:11px;font-size:14px;font-weight:700}
+        .modal-note{background:#f5f0e6;border-radius:13px;padding:12px;font-size:12px;color:var(--muted);margin-bottom:18px;font-weight:700}
         .modal-box > .btn{width:100%}
 
-        footer{background:#0b1e38;color:#cfd7e0;padding:30px 0;text-align:center}
+        footer{background:#0b1e38;color:#cfd7e0;padding:30px 0;text-align:center;font-weight:700}
         footer strong{color:#fff} footer span{color:var(--gold-2)}
         .footer-links{margin-top:8px;font-size:13px}
 
@@ -267,8 +270,8 @@
             <div class="container hero-grid">
                 <div>
                     <div class="eyebrow">💡 حصرياً لعمال المصانع الأبطال</div>
-                    <h1>اعرف حقك بالقرش!<br><span>احسب مرتبك الإضافي</span> والشيفتات بدقة</h1>
-                    <p>مش هتحتار تاني في حساب مرتبك أو ساعات الإضافي والخصومات. حاسبة "شغل فور يو" مصممة خصيصاً عشان تريح بالك وتعرف صافي قبضك فوراً، وبعدين تتابع أحدث فرص الشغل المتاحة!</p>
+                    <h1>احسب حقك بالقرش.. وبكل سهولة!<br><span>اعرف صافي مرتبك، الإضافي والخصومات</span> في ثوانٍ</h1>
+                    <p>مع "شغل فور يو"، ودّع الحيرة ومشاكل الحسابات المعقدة. صممنا لك هذه الحاسبة الذكية لتضمن حصولك على كل مليم تستحقه، ولتكون بوابتك الأولى لمتابعة أحدث فرص العمل المتاحة!</p>
                     <div class="actions">
                         <a class="btn btn-gold" href="#calculator">🧮 جرب الحاسبة الآن</a>
                         <a class="btn btn-primary" href="#jobs">🔎 تصفح الوظائف</a>
@@ -387,7 +390,7 @@
                         <button class="btn btn-light details-btn" data-job-id="3">عرض التفاصيل ←</button>
                     </article>
                 </div>
-                <p id="noJobs" style="display:none;text-align:center;color:var(--muted);padding:25px">لا توجد وظيفة مطابقة للبحث.</p>
+                <p id="noJobs" style="display:none;text-align:center;color:var(--muted);padding:25px;font-weight:700;">لا توجد وظيفة مطابقة للبحث.</p>
             </div>
         </section>
 
@@ -406,7 +409,7 @@
             </div>
         </div>
 
-        <!-- قسم قصص النجاح (Testimonials) -->
+        <!-- قسم قصص النجاح -->
         <section id="testimonials">
             <div class="container">
                 <div class="section-head">
@@ -635,7 +638,7 @@
             document.getElementById('register').scrollIntoView({behavior:'smooth'});
         });
 
-        // إرسال البيانات (مع إمكانية ربطها بـ Google Sheets عبر وضع الـ URL الخاص بك بدل النص الوهمي)
+        // إرسال البيانات (رابط Google Apps Script)
         const scriptURL = 'ضع_رابط_جوجل_أبس_سكريبت_هنا'; 
 
         document.getElementById('registrationForm').addEventListener('submit', function(e){
