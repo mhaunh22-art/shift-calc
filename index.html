@@ -1,665 +1,595 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="شغل فور يو - بوابة مجانية للتسجيل في فرص العمل بالمصانع والشركات، مع حاسبة أجور مجانية.">
-  <title>شغل فور يو | فرص العمل تبدأ من هنا</title>
-  <style>
-    :root{
-      --navy:#102746;
-      --navy-2:#18385f;
-      --gold:#c99a3b;
-      --gold-2:#e1bb69;
-      --cream:#f5f0e6;
-      --paper:#fbfaf7;
-      --white:#fff;
-      --text:#263445;
-      --muted:#6d7784;
-      --line:#e8e0d2;
-      --success:#2f7d5b;
-      --shadow:0 14px 40px rgba(16,39,70,.10);
-      --radius:22px;
-      padding-top: env(safe-area-inset-top, 0px);
-      padding-bottom: env(safe-area-inset-bottom, 0px);
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth; scroll-padding-top: env(safe-area-inset-top, 0px);}
-    body{
-      font-family:"Tahoma","Segoe UI",Arial,sans-serif;
-      background:var(--cream);
-      color:var(--text);
-      line-height:1.75;
-      overflow-x:hidden;
-    }
-    a{text-decoration:none;color:inherit}
-    button,input,select{font:inherit}
-    img,svg{max-width:100%}
-    .container{width:min(1120px,92%);margin:auto}
-    .topbar{
-      background:var(--navy);color:#fff;font-size:13px;
-      padding:8px 12px;text-align:center;
-      padding-top: calc(8px + env(safe-area-inset-top, 0px));
-    }
-    header{
-      position:sticky;top:0;z-index:50;
-      background:rgba(251,250,247,.94);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(16,39,70,.08);
-    }
-    .nav{
-      min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:14px;
-      flex-wrap:nowrap;
-    }
-    .brand{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--navy);min-width:0}
-    .brand-mark{
-      width:42px;height:42px;border-radius:13px;background:var(--navy);
-      color:var(--gold-2);display:grid;place-items:center;font-size:20px;flex-shrink:0;
-      box-shadow:0 8px 20px rgba(16,39,70,.18)
-    }
-    .brand small{display:block;color:var(--gold);font-size:10.5px;letter-spacing:.3px;font-weight:700;white-space:nowrap}
-    .brand > div{min-width:0}
-    .brand span.b-name{white-space:nowrap;font-size:15px}
-    .navlinks{display:flex;gap:4px;align-items:center;flex-shrink:0}
-    .navlinks a{padding:9px 12px;border-radius:12px;color:var(--navy);font-weight:700;font-size:14px;white-space:nowrap}
-    .navlinks a:hover{background:#eee6d8}
-    .menu{display:none;border:0;background:transparent;color:var(--navy);font-size:24px;cursor:pointer;flex-shrink:0}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="شغل فور يو - بوابة مجانية للتسجيل في فرص العمل بالمصانع وحاسبة الأجور الدقيقة.">
+    <title>شغل فور يو | فرص العمل وحاسبة المرتبات</title>
+    <style>
+        :root{
+            --navy:#102746;
+            --navy-2:#18385f;
+            --gold:#c99a3b;
+            --gold-2:#e1bb69;
+            --cream:#f5f0e6;
+            --paper:#fbfaf7;
+            --white:#fff;
+            --text:#263445;
+            --muted:#6d7784;
+            --line:#e8e0d2;
+            --success:#2f7d5b;
+            --shadow:0 14px 40px rgba(16,39,70,.10);
+            --radius:22px;
+        }
+        *{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth}
+        body{
+            font-family:"Tahoma","Segoe UI",Arial,sans-serif;
+            background:var(--cream);
+            color:var(--text);
+            line-height:1.75;
+        }
+        a{text-decoration:none;color:inherit}
+        button,input,select{font:inherit}
+        .container{width:min(1120px,92%);margin:auto}
+        
+        .topbar{
+            background:var(--navy);color:#fff;font-size:14px;
+            padding:8px 0;text-align:center;font-weight: bold;
+        }
+        header{
+            position:sticky;top:0;z-index:50;
+            background:rgba(251,250,247,.94);
+            backdrop-filter:blur(12px);
+            border-bottom:1px solid rgba(16,39,70,.08);
+        }
+        .nav{
+            min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+        }
+        .brand{display:flex;align-items:center;gap:12px;font-weight:900;color:var(--navy)}
+        .brand-mark{
+            width:46px;height:46px;border-radius:14px;background:var(--navy);
+            color:var(--gold-2);display:grid;place-items:center;font-size:22px;
+            box-shadow:0 8px 20px rgba(16,39,70,.18)
+        }
+        .brand small{display:block;color:var(--gold);font-size:11px;letter-spacing:.5px}
+        .navlinks{display:flex;gap:8px;align-items:center}
+        .navlinks a{padding:10px 14px;border-radius:12px;color:var(--navy);font-weight:700}
+        .navlinks a:hover{background:#eee6d8}
+        .menu{display:none;border:0;background:transparent;color:var(--navy);font-size:26px;cursor:pointer}
 
-    .hero{
-      position:relative;overflow:hidden;
-      padding:56px 0 56px;
-      background:
-        radial-gradient(circle at 12% 25%,rgba(201,154,59,.16),transparent 25%),
-        radial-gradient(circle at 90% 15%,rgba(16,39,70,.10),transparent 28%),
-        var(--paper);
-    }
-    .hero:before,.hero:after{
-      content:"";position:absolute;border:1px solid rgba(201,154,59,.18);
-      border-radius:50%;width:280px;height:280px;pointer-events:none
-    }
-    .hero:before{left:-150px;bottom:-160px}.hero:after{right:-160px;top:-170px}
-    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
-    .eyebrow{
-      display:inline-flex;align-items:center;gap:8px;
-      background:#f0e8d9;color:var(--navy);padding:7px 13px;border-radius:999px;
-      font-weight:800;font-size:12.5px;margin-bottom:14px
-    }
-    h1{font-size:clamp(28px,5vw,54px);line-height:1.18;color:var(--navy);margin-bottom:16px;word-break:break-word}
-    h1 span{color:var(--gold)}
-    .hero p{font-size:clamp(14px,2vw,18px);color:var(--muted);max-width:680px}
-    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
-    .btn{
-      border:0;cursor:pointer;border-radius:14px;padding:13px 20px;font-weight:900;font-size:14px;
-      transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      max-width:100%;
-    }
-    .btn-primary{background:var(--navy);color:#fff;box-shadow:0 10px 24px rgba(16,39,70,.18)}
-    .btn-primary:hover{transform:translateY(-2px);background:#0b1e38}
-    .btn-gold{background:var(--gold);color:#fff;box-shadow:0 10px 24px rgba(201,154,59,.22)}
-    .btn-gold:hover{transform:translateY(-2px)}
-    .btn-light{background:#fff;color:var(--navy);border:1px solid var(--line)}
-    .hero-card{
-      background:#fff;border:1px solid var(--line);border-radius:26px;padding:26px;
-      box-shadow:var(--shadow);position:relative;min-width:0;
-    }
-    .hero-card .shield{font-size:44px;margin-bottom:8px}
-    .hero-card h3{color:var(--navy);font-size:22px}
-    .check-list{list-style:none;margin-top:16px;display:grid;gap:11px}
-    .check-list li{display:flex;gap:10px;align-items:flex-start;font-size:14px}
-    .check{width:24px;height:24px;flex:0 0 24px;border-radius:50%;background:#e9f5ee;color:var(--success);display:grid;place-items:center;font-weight:900;font-size:13px}
+        /* Hero Section */
+        .hero{
+            position:relative;overflow:hidden;
+            padding:78px 0 70px;
+            background:
+                radial-gradient(circle at 12% 25%,rgba(201,154,59,.16),transparent 25%),
+                radial-gradient(circle at 90% 15%,rgba(16,39,70,.10),transparent 28%),
+                var(--paper);
+        }
+        .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center}
+        .eyebrow{
+            display:inline-flex;align-items:center;gap:8px;
+            background:#f0e8d9;color:var(--navy);padding:7px 13px;border-radius:999px;
+            font-weight:800;font-size:13px;margin-bottom:16px
+        }
+        h1{font-size:clamp(32px,4vw,52px);line-height:1.15;color:var(--navy);margin-bottom:18px}
+        h1 span{color:var(--gold)}
+        .hero p{font-size:18px;color:var(--muted);max-width:680px}
+        .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+        .btn{
+            border:0;cursor:pointer;border-radius:14px;padding:13px 20px;font-weight:900;
+            transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:8px
+        }
+        .btn-primary{background:var(--navy);color:#fff;box-shadow:0 10px 24px rgba(16,39,70,.18)}
+        .btn-primary:hover{transform:translateY(-2px);background:#0b1e38}
+        .btn-gold{background:var(--gold);color:#fff;box-shadow:0 10px 24px rgba(201,154,59,.22)}
+        .btn-gold:hover{transform:translateY(-2px);background:#b88b31}
+        .btn-light{background:#fff;color:var(--navy);border:1px solid var(--line)}
 
-    section{padding:60px 0}
-    .section-head{text-align:center;max-width:760px;margin:0 auto 32px}
-    .section-head .label{color:var(--gold);font-weight:900;font-size:12.5px}
-    .section-head h2{color:var(--navy);font-size:clamp(24px,4vw,36px);margin:5px 0;word-break:break-word}
-    .section-head p{color:var(--muted);font-size:clamp(13px,2vw,16px)}
-    .features{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .feature{
-      background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;
-      box-shadow:0 8px 24px rgba(16,39,70,.05);min-width:0;
-    }
-    .icon{width:44px;height:44px;border-radius:13px;background:#f1eadc;display:grid;place-items:center;font-size:21px;margin-bottom:12px}
-    .feature h3{color:var(--navy);font-size:16px;margin-bottom:5px}.feature p{font-size:13.5px;color:var(--muted)}
+        /* Calculator Section Style */
+        .calc-card {
+            background: #102746;
+            color: #fff;
+            border-radius: 26px;
+            padding: 30px;
+            box-shadow: 0 20px 50px rgba(16,39,70,0.3);
+            border: 2px solid var(--gold);
+        }
+        .calc-card h2, .calc-card h3 { text-align: center; color: var(--gold-2); margin-bottom: 10px; }
+        .calc-card label { display: block; margin-top: 12px; font-weight: bold; color: #cbd5e1; font-size: 14px; }
+        .calc-card input, .calc-card select { 
+            width: 100%; padding: 11px; margin-top: 5px; border-radius: 10px; 
+            border: 1px solid #475569; background: #0f172a; color: #fff; outline: none;
+        }
+        .calc-card input:focus, .calc-card select:focus { border-color: var(--gold); }
+        .calc-result { 
+            margin-top: 20px; padding: 15px; background: #0f172a; 
+            border-radius: 12px; border: 1px dashed var(--gold); text-align: center; 
+        }
 
-    /* ---------- salary calculator ---------- */
-    .calc-section{background:var(--paper)}
-    .calc-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px;align-items:start}
-    .calc-info{background:var(--navy);color:#fff;border-radius:24px;padding:26px;box-shadow:var(--shadow);position:sticky;top:90px}
-    .calc-info h3{font-size:22px;margin-bottom:10px}
-    .calc-info p{color:#d8e0e9;font-size:14px}
-    .calc-info ul{list-style:none;margin-top:16px;display:grid;gap:10px;font-size:13.5px;color:#d8e0e9}
-    .calc-info ul li{display:flex;gap:8px}
-    .calc-card{
-      background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:var(--shadow);
-      min-width:0;
-    }
-    .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-    .calc-field.full{grid-column:1/-1}
-    .calc-field label{display:block;font-weight:800;color:var(--navy);font-size:13.5px;margin-bottom:6px}
-    .calc-field input,.calc-field select{
-      width:100%;border:1px solid #ddd6ca;border-radius:12px;padding:11px 12px;
-      background:#fff;outline:none;transition:.2s;font-size:14px;
-    }
-    .calc-field input:focus,.calc-field select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,154,59,.12)}
-    .calc-card .btn{width:100%;margin-top:18px}
-    .calc-result{
-      display:none;margin-top:18px;padding:16px;background:var(--paper);
-      border:1px dashed var(--gold);border-radius:16px;font-size:14px;line-height:2;
-    }
-    .calc-result strong{color:var(--navy);font-size:16px}
-    .calc-note{margin-top:12px;font-size:11.5px;color:var(--muted);text-align:center}
+        section{padding:78px 0}
+        .section-head{text-align:center;max-width:760px;margin:0 auto 35px}
+        .section-head .label{color:var(--gold);font-weight:900;font-size:13px}
+        .section-head h2{color:var(--navy);font-size:clamp(28px,4vw,40px);margin:5px 0}
+        .section-head p{color:var(--muted)}
+        
+        /* Features */
+        .features{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+        .feature{
+            background:#fff;border:1px solid var(--line);border-radius:18px;padding:23px;
+            box-shadow:0 8px 24px rgba(16,39,70,.05)
+        }
+        .icon{width:45px;height:45px;border-radius:13px;background:#f1eadc;display:grid;place-items:center;font-size:22px;margin-bottom:13px}
+        .feature h3{color:var(--navy);font-size:17px;margin-bottom:5px}.feature p{font-size:14px;color:var(--muted)}
 
-    .jobs-section{background:var(--paper)}
-    .job-tools{display:flex;gap:10px;justify-content:space-between;align-items:stretch;margin-bottom:20px;flex-wrap:wrap}
-    .search{flex:1;min-width:200px;position:relative}
-    .search input{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:13px 44px 13px 14px;outline:0;font-size:14px}
-    .search span{position:absolute;right:15px;top:10px;font-size:18px}
-    .filter{min-width:150px;border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px 13px;color:var(--navy);font-weight:700;outline:0;font-size:13.5px}
-    .job-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .job{
-      background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;
-      box-shadow:0 8px 25px rgba(16,39,70,.05);display:flex;flex-direction:column;min-width:0;
-    }
-    .job-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-    .job h3{color:var(--navy);font-size:17px;word-break:break-word}
-    .badge{font-size:11px;background:#f1eadc;color:#7b5b18;padding:5px 9px;border-radius:999px;white-space:nowrap;flex-shrink:0}
-    .job-company{color:var(--gold);font-size:12.5px;font-weight:900;margin-top:6px}
-    .muted-badge{background:#eeeae3;color:#777}
-    .meta{display:grid;gap:7px;margin:14px 0;color:var(--muted);font-size:13.5px}
-    .meta div{display:flex;gap:8px}
-    .job .btn{margin-top:auto;width:100%;font-size:13.5px}
+        /* Jobs Section */
+        .jobs-section{background:var(--paper)}
+        .job-tools{display:flex;gap:10px;justify-content:space-between;align-items:center;margin-bottom:22px;flex-wrap:wrap}
+        .search{flex:1;min-width:230px;position:relative}
+        .search input{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:13px 44px 13px 14px;outline:0}
+        .search span{position:absolute;right:15px;top:14px;font-size:18px}
+        .filter{min-width:175px;border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px 13px;color:var(--navy);font-weight:700;outline:0}
+        
+        .job-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+        .job{
+            background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;
+            box-shadow:0 8px 25px rgba(16,39,70,.05);display:flex;flex-direction:column
+        }
+        .job-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+        .job h3{color:var(--navy);font-size:19px}
+        .badge{font-size:11px;background:#f1eadc;color:#7b5b18;padding:5px 9px;border-radius:999px;white-space:nowrap}
+        .job-company{color:var(--gold);font-size:13px;font-weight:900;margin-top:6px}
+        .meta{display:grid;gap:7px;margin:16px 0;color:var(--muted);font-size:14px}
+        .meta div{display:flex;gap:8px}
+        .job .btn{margin-top:auto;width:100%}
 
-    .modal{display:none;position:fixed;inset:0;z-index:100;align-items:center;justify-content:center;padding:16px}
-    .modal.open{display:flex}
-    .modal-backdrop{position:absolute;inset:0;background:rgba(6,20,38,.68);backdrop-filter:blur(4px)}
-    .modal-box{position:relative;width:min(560px,100%);max-height:90vh;overflow-y:auto;background:#fff;border-radius:24px;padding:26px;box-shadow:0 25px 80px rgba(0,0,0,.28);z-index:1;animation:pop .18s ease-out}
-    @keyframes pop{from{transform:scale(.96);opacity:.5}to{transform:scale(1);opacity:1}}
-    .modal-close{position:absolute;left:16px;top:12px;border:0;background:#f3eee5;color:var(--navy);width:34px;height:34px;border-radius:50%;font-size:22px;cursor:pointer}
-    .modal-icon{width:56px;height:56px;background:#f1eadc;border-radius:16px;display:grid;place-items:center;font-size:27px;margin-bottom:13px}
-    .modal-box h2{color:var(--navy);font-size:24px;margin:8px 0 0;word-break:break-word}
-    .modal-company{color:var(--gold);font-weight:900;margin-bottom:16px;font-size:14px}
-    .detail-list{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px}
-    .detail-item{background:#faf8f3;border:1px solid var(--line);border-radius:12px;padding:10px;font-size:13px}
-    .modal-note{background:#f5f0e6;border-radius:12px;padding:11px;font-size:11.5px;color:var(--muted);margin-bottom:16px}
-    .modal-box > .btn{width:100%}
+        /* Register Form Section */
+        .register-wrap{display:grid;grid-template-columns:.75fr 1.25fr;gap:28px;align-items:start}
+        .info-card,.form-card{
+            background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow)
+        }
+        .info-card{background:var(--navy);color:#fff;position:sticky;top:95px}
+        .info-card h3{font-size:27px;margin-bottom:10px}
+        .info-card p{color:#d8e0e9}
+        .info-points{list-style:none;margin-top:20px;display:grid;gap:14px}
+        .info-points li{display:flex;gap:10px}
+        .form-title{color:var(--navy);font-size:25px;margin-bottom:5px}
+        .form-sub{color:var(--muted);font-size:14px;margin-bottom:22px}
+        .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+        .field.full{grid-column:1/-1}
+        .form-card label{display:block;font-weight:800;color:var(--navy);font-size:14px;margin-bottom:6px}
+        .form-card input, .form-card select{
+            width:100%;border:1px solid #ddd6ca;border-radius:12px;padding:12px 13px;
+            background:#fff;outline:none;transition:.2s
+        }
+        .form-card input:focus,.form-card select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,154,59,.12)}
+        .form-actions{margin-top:20px}
+        .form-actions .btn{width:100%}
+        .notice{margin-top:12px;font-size:12px;color:var(--muted);text-align:center}
+        .success{
+            display:none;background:#edf8f1;border:1px solid #cbe8d6;color:#286747;
+            border-radius:14px;padding:13px;margin-top:15px;text-align:center;font-weight:700
+        }
 
-    .register-wrap{display:grid;grid-template-columns:.75fr 1.25fr;gap:24px;align-items:start}
-    .info-card,.form-card{
-      background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:var(--shadow);min-width:0;
-    }
-    .info-card{background:var(--navy);color:#fff;position:sticky;top:90px}
-    .info-card h3{font-size:24px;margin-bottom:10px}
-    .info-card p{color:#d8e0e9;font-size:14px}
-    .info-points{list-style:none;margin-top:18px;display:grid;gap:12px;font-size:14px}
-    .info-points li{display:flex;gap:10px}
-    .form-title{color:var(--navy);font-size:22px;margin-bottom:5px;word-break:break-word}
-    .form-sub{color:var(--muted);font-size:13.5px;margin-bottom:20px}
-    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-    .field.full{grid-column:1/-1}
-    label{display:block;font-weight:800;color:var(--navy);font-size:13.5px;margin-bottom:6px}
-    input,select{
-      width:100%;border:1px solid #ddd6ca;border-radius:12px;padding:11px 12px;
-      background:#fff;outline:none;transition:.2s;font-size:14px;
-    }
-    input:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,154,59,.12)}
-    .form-actions{margin-top:18px}.form-actions .btn{width:100%}
-    .notice{margin-top:12px;font-size:11.5px;color:var(--muted);text-align:center}
-    .success{
-      display:none;background:#edf8f1;border:1px solid #cbe8d6;color:#286747;
-      border-radius:14px;padding:13px;margin-top:14px;text-align:center;font-weight:700;font-size:13.5px;
-    }
+        /* Modal */
+        .modal{display:none;position:fixed;inset:0;z-index:100;align-items:center;justify-content:center;padding:20px}
+        .modal.open{display:flex}
+        .modal-backdrop{position:absolute;inset:0;background:rgba(6,20,38,.68);backdrop-filter:blur(4px)}
+        .modal-box{position:relative;width:min(560px,100%);background:#fff;border-radius:26px;padding:30px;box-shadow:0 25px 80px rgba(0,0,0,.28);z-index:1}
+        .modal-close{position:absolute;left:18px;top:14px;border:0;background:#f3eee5;color:var(--navy);width:36px;height:36px;border-radius:50%;font-size:25px;cursor:pointer}
+        .modal-icon{width:62px;height:62px;background:#f1eadc;border-radius:18px;display:grid;place-items:center;font-size:30px;margin-bottom:15px}
+        .modal-box h2{color:var(--navy);font-size:26px;margin:10px 0 0}
+        .modal-company{color:var(--gold);font-weight:900;margin-bottom:18px}
+        .detail-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+        .detail-item{background:#faf8f3;border:1px solid var(--line);border-radius:13px;padding:11px;font-size:14px}
+        .modal-note{background:#f5f0e6;border-radius:13px;padding:12px;font-size:12px;color:var(--muted);margin-bottom:18px}
+        .modal-box > .btn{width:100%}
 
-    footer{background:#0b1e38;color:#cfd7e0;padding:26px 0;text-align:center;font-size:13px;
-      padding-bottom: calc(26px + env(safe-area-inset-bottom, 0px));}
-    footer strong{color:#fff} footer span{color:var(--gold-2)}
-    .footer-links{margin-top:8px;font-size:12.5px}
+        footer{background:#0b1e38;color:#cfd7e0;padding:30px 0;text-align:center}
+        footer strong{color:#fff} footer span{color:var(--gold-2)}
+        .footer-links{margin-top:8px;font-size:13px}
 
-    /* ------------- responsive ------------- */
-    @media(max-width:960px){
-      .hero-grid,.register-wrap,.calc-wrap{grid-template-columns:1fr}
-      .info-card,.calc-info{position:static}
-      .features{grid-template-columns:repeat(2,1fr)}
-      .job-grid{grid-template-columns:repeat(2,1fr)}
-      .hero{padding-top:40px}
-    }
-    @media(max-width:700px){
-      .navlinks{display:none;position:absolute;top:100%;right:4%;left:4%;background:#fff;padding:10px;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);flex-direction:column;margin-top:8px}
-      .navlinks.show{display:flex}.navlinks a{width:100%;text-align:center}
-      .menu{display:block}
-      .features,.job-grid,.form-grid,.calc-grid{grid-template-columns:1fr}
-      .hero p{font-size:14.5px}
-      .actions .btn{width:100%}
-      section{padding:44px 0}
-      .container{width:94%}
-      .job-tools{flex-direction:column}
-      .search,.filter{width:100%;min-width:0}
-      .detail-list{grid-template-columns:1fr}
-    }
-    @media(max-width:420px){
-      .brand small{display:none}
-      .eyebrow{font-size:11.5px}
-      .btn{padding:12px 16px;font-size:13.5px}
-    }
-  </style>
+        /* Responsive */
+        @media(max-width:900px){
+            .hero-grid,.register-wrap{grid-template-columns:1fr}
+            .info-card{position:static}
+            .features{grid-template-columns:repeat(2,1fr)}
+            .job-grid{grid-template-columns:repeat(2,1fr)}
+            .hero{padding-top:45px}
+        }
+        @media(max-width:650px){
+            .navlinks{display:none;position:absolute;top:76px;right:4%;left:4%;background:#fff;padding:10px;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);flex-direction:column}
+            .navlinks.show{display:flex}.navlinks a{width:100%;text-align:center}
+            .menu{display:block}
+            .features,.job-grid,.form-grid{grid-template-columns:1fr}
+            .hero p{font-size:16px}.actions .btn{width:100%}
+            section{padding:50px 0}
+        }
+    </style>
 </head>
 <body>
 
-  <div class="topbar">🛡️ شغل فور يو — التسجيل مجاني 100% وبدون رسوم</div>
+    <div class="topbar">🛡️ شغل فور يو — التسجيل مجاني 100% وبدون أي رسوم توظيف</div>
 
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#home">
-        <div class="brand-mark">ش</div>
-        <div><span class="b-name">شغل فور يو</span><small>فرصتك للشغل تبدأ من هنا</small></div>
-      </a>
-      <nav class="navlinks" id="navLinks">
-        <a href="#jobs">الوظائف</a>
-        <a href="#calculator">حاسبة الأجور</a>
-        <a href="#why">ليه شغل فور يو؟</a>
-        <a href="#register">سجّل بياناتك</a>
-      </nav>
-      <button class="menu" id="menuBtn" aria-label="فتح القائمة">☰</button>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">✨ بوابة توظيف بسيطة وواضحة</div>
-          <h1>دَوّر على شغلك<br><span>وسجّل فرصتك</span> معانا</h1>
-          <p>شغل فور يو يساعد الباحثين عن عمل في الوصول إلى فرص مناسبة في المصانع والشركات، مع تسجيل بياناتك بسهولة وبدون رسوم.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="#jobs">🔎 شوف الوظائف المتاحة</a>
-            <a class="btn btn-gold" href="#register">📝 سجّل بياناتك مجانًا</a>
-          </div>
+    <header>
+        <div class="container nav">
+            <a class="brand" href="#home">
+                <div class="brand-mark">ش</div>
+                <div>شغل فور يو<small>فرصتك للشغل تبدأ من هنا</small></div>
+            </a>
+            <nav class="navlinks" id="navLinks">
+                <a href="#calculator">حاسبة الأجور</a>
+                <a href="#jobs">الوظائف</a>
+                <a href="#why">ليه شغل فور يو؟</a>
+                <a href="#register">سجّل بياناتك</a>
+            </nav>
+            <button class="menu" id="menuBtn" aria-label="فتح القائمة">☰</button>
         </div>
-        <div class="hero-card">
-          <div class="shield">🛡️</div>
-          <h3>تسجيلك مجاني</h3>
-          <p>املأ بياناتك مرة واحدة، وعند توفر فرصة مناسبة لبياناتك يتم التواصل معك.</p>
-          <ul class="check-list">
-            <li><span class="check">✓</span><span>بدون رسوم تسجيل</span></li>
-            <li><span class="check">✓</span><span>وظائف مصانع وشركات</span></li>
-            <li><span class="check">✓</span><span>بيانات واضحة وخطوات بسيطة</span></li>
-            <li><span class="check">✓</span><span>مناسب للموبايل والكمبيوتر</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    </header>
 
-    <section id="why">
-      <div class="container">
-        <div class="section-head">
-          <div class="label">ليه تختار شغل فور يو؟</div>
-          <h2>كل اللي يهمك في مكان واحد</h2>
-          <p>صممنا الموقع عشان يكون سهل وسريع وواضح للباحث عن العمل.</p>
-        </div>
-        <div class="features">
-          <div class="feature"><div class="icon">💰</div><h3>بدون رسوم</h3><p>التسجيل في قاعدة البيانات مجاني للباحث عن العمل.</p></div>
-          <div class="feature"><div class="icon">🏭</div><h3>فرص مصانع وشركات</h3><p>تابع الفرص المتاحة واختار ما يناسبك.</p></div>
-          <div class="feature"><div class="icon">📱</div><h3>سهل من الموبايل</h3><p>واجهة سريعة ومريحة حتى على شاشة الهاتف.</p></div>
-          <div class="feature"><div class="icon">📋</div><h3>بيانات منظمة</h3><p>سجّل مهاراتك ومستنداتك مرة واحدة بشكل مرتب.</p></div>
-        </div>
-      </div>
-    </section>
+    <main>
+        <!-- Hero Section مع حاسبة الأجور الجذابة -->
+        <section class="hero" id="home">
+            <div class="container hero-grid">
+                <div>
+                    <div class="eyebrow">💡 حصرياً لعمال المصانع الأبطال</div>
+                    <h1>اعرف حقك بالقرش!<br><span>احسب مرتبك الإضافي</span> والشيفتات بدقة</h1>
+                    <p>مش هتحتار تاني في حساب مرتبك أو ساعات الإضافي والخصومات. حاسبة "شغل فور يو" مصممة خصيصاً عشان تريح بالك وتعرف صافي قبضك فوراً قبل ما تقبض، وبعدين تتابع أحدث فرص الشغل المتاحة!</p>
+                    <div class="actions">
+                        <a class="btn btn-gold" href="#calculator">🧮 جرب الحاسبة الآن</a>
+                        <a class="btn btn-primary" href="#jobs">🔎 تصفح الوظائف</a>
+                    </div>
+                </div>
 
-    <section class="calc-section" id="calculator">
-      <div class="container">
-        <div class="section-head">
-          <div class="label">حاسبة الأجور</div>
-          <h2>اعرف صافي مرتبك تقريبًا</h2>
-          <p>حاسبة تقديرية لمرتب عمال المصانع، بتحسب الإضافي والخصومات بشكل مبسّط.</p>
-        </div>
+                <!-- كارت الحاسبة الجذاب -->
+                <div class="calc-card" id="calculator">
+                    <h2>حاسبة أجور عمال المصانع 🛡️</h2>
+                    <h3>احسب صافي مرتبك في ثواني</h3>
+                    
+                    <label>المرتب الأساسي (أو الأجر الشهري):</label>
+                    <input type="number" id="basicSalary" placeholder="مثال: 6000">
 
-        <div class="calc-wrap">
-          <aside class="calc-info">
-            <h3>🧮 إزاي بنحسب؟</h3>
-            <p>الحاسبة تقديرية وبسيطة، مبنية على أساس شهر عمل من 240 ساعة (30 يوم × 8 ساعات).</p>
-            <ul>
-              <li>💰 الأساسي: كما تكتبه بالكامل</li>
-              <li>⏱️ الإضافي النهاري: 1.35 × سعر الساعة</li>
-              <li>🌙 الإضافي الليلي: 1.70 × سعر الساعة</li>
-              <li>➖ الخصومات: تُطرح من الإجمالي</li>
-            </ul>
-          </aside>
+                    <label>عدد ساعات الإضافي:</label>
+                    <input type="number" id="overtimeHours" placeholder="عدد الساعات الإضافية">
 
-          <div class="calc-card">
-            <div class="calc-grid">
-              <div class="calc-field">
-                <label for="basicSalary">المرتب الأساسي (شهريًا)</label>
-                <input type="number" id="basicSalary" placeholder="مثال: 5000">
-              </div>
-              <div class="calc-field">
-                <label for="overtimeHours">عدد ساعات الإضافي</label>
-                <input type="number" id="overtimeHours" placeholder="مثال: 10">
-              </div>
-              <div class="calc-field">
-                <label for="shiftType">نوع الشيفت</label>
-                <select id="shiftType">
-                  <option value="day">شيفت نهاري (إضافي 1.35×)</option>
-                  <option value="night">شيفت ليلي (إضافي 1.70×)</option>
-                </select>
-              </div>
-              <div class="calc-field">
-                <label for="deductions">الخصومات أو الجزاءات</label>
-                <input type="number" id="deductions" placeholder="0" value="0">
-              </div>
+                    <label>نوع الشيفت:</label>
+                    <select id="shiftType">
+                        <option value="day">شيفت نهاري (عادي)</option>
+                        <option value="night">شيفت ليلي (بنسبة إضافي)</option>
+                    </select>
+
+                    <label>الخصومات أو الجزاءات:</label>
+                    <input type="number" id="deductions" placeholder="قيمة الجزاءات أو الغياب" value="0">
+
+                    <button class="btn btn-gold" style="width:100%; margin-top:20px;" onclick="calculateSalary()">احسب صافي المرتب الآن 💰</button>
+
+                    <div class="calc-result" id="resultBox" style="display: none;">
+                        <h3 style="color:var(--gold-2); margin-bottom:5px;">إجمالي صافي المرتب:</h3>
+                        <p id="finalResultText" style="font-size:18px; font-weight:bold; color:#fff;"></p>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <button class="btn btn-gold" onclick="calculateSalary()">🧮 احسب صافي المرتب الآن</button>
-
-            <div class="calc-result" id="resultBox">
-              <div id="finalResultText"></div>
+        <!-- ليه شغل فور يو -->
+        <section id="why">
+            <div class="container">
+                <div class="section-head">
+                    <div class="label">مميزات المنصة</div>
+                    <h2>كل اللي يهمك كعامل في مكان واحد</h2>
+                    <p>نوفر لك أدوات ذكية وفرص عمل حقيقية بدون أي استغلال أو رسوم.</p>
+                </div>
+                <div class="features">
+                    <div class="feature"><div class="icon">💰</div><h3>بدون رسوم</h3><p>التسجيل وحساب الأجور مجاني تماماً للباحث عن العمل.</p></div>
+                    <div class="feature"><div class="icon">🏭</div><h3>فرص مصانع</h3><p>تابع الوظائف المتاحة في المدن الصناعية الكبرى.</p></div>
+                    <div class="feature"><div class="icon">📱</div><h3>سهل الاستخدام</h3><p>يعمل بكفاءة عالية على الموبايل والكمبيوتر.</p></div>
+                    <div class="feature"><div class="icon">🧮</div><h3>حاسبة ذكية</h3><p>معرفة دقيقة للرواتب وساعات الإضافي والشيفتات.</p></div>
+                </div>
             </div>
-            <p class="calc-note">حساب تقديري لمساعدتك على التخطيط، وليس بديلاً عن كشف المرتب الرسمي من الشركة.</p>
-          </div>
+        </section>
+
+        <!-- قسم الوظائف -->
+        <section class="jobs-section" id="jobs">
+            <div class="container">
+                <div class="section-head">
+                    <div class="label">الفرص المتاحة</div>
+                    <h2>اختار الوظيفة المناسبة ليك</h2>
+                    <p>ابحث وفلتر الوظائف، واضغط على أي وظيفة لمعرفة التفاصيل والتقديم.</p>
+                </div>
+
+                <div class="job-tools">
+                    <div class="search">
+                        <span>🔎</span>
+                        <input id="jobSearch" type="search" placeholder="ابحث عن وظيفة أو مكان...">
+                    </div>
+                    <select id="locationFilter" class="filter">
+                        <option value="">كل المحافظات والمدن</option>
+                        <option value="العاشر من رمضان">العاشر من رمضان</option>
+                        <option value="أكتوبر">أكتوبر</option>
+                        <option value="العبور">العبور</option>
+                    </select>
+                    <select id="typeFilter" class="filter">
+                        <option value="">كل التخصصات</option>
+                        <option value="إنتاج">إنتاج</option>
+                        <option value="سائق">سائق</option>
+                        <option value="مخازن">مخازن</option>
+                    </select>
+                </div>
+
+                <div class="job-grid" id="jobGrid">
+                    <article class="job" data-search="عامل تعبئة تغليف العاشر رمضان انتاج" data-location="العاشر من رمضان" data-type="إنتاج">
+                        <div class="job-top"><h3>عامل تعبئة وتغليف</h3><span class="badge">متاح الآن</span></div>
+                        <div class="job-company">🏭 مصنع إنتاج وتغليف</div>
+                        <div class="meta">
+                            <div>📍 العاشر من رمضان</div>
+                            <div>👤 الخبرة: تقبل بدون خبرة</div>
+                            <div>💰 الراتب: 6500 - 7500 جنيه</div>
+                            <div>🏠 السكن والمواصلات: متاح للمغتربين</div>
+                        </div>
+                        <button class="btn btn-primary details-btn" data-job-id="1">عرض التفاصيل والتقديم ←</button>
+                    </article>
+
+                    <article class="job" data-search="سائق كلارك فني انتاج اكتوبر العبور" data-location="أكتوبر" data-type="سائق">
+                        <div class="job-top"><h3>سائق كلارك / فني إنتاج</h3><span class="badge">متاح الآن</span></div>
+                        <div class="job-company">🏭 شركة صناعية كبرى</div>
+                        <div class="meta">
+                            <div>📍 أكتوبر / العبور</div>
+                            <div>👤 الخبرة: سنة على الأقل</div>
+                            <div>💰 الراتب: حسب المقابلة والخبرة</div>
+                            <div>🛡️ التأمين: شامل التأمين الاجتماعي</div>
+                        </div>
+                        <button class="btn btn-primary details-btn" data-job-id="2">عرض التفاصيل والتقديم ←</button>
+                    </article>
+
+                    <article class="job" data-search="عمال مخازن مخزن مستودع" data-location="" data-type="مخازن">
+                        <div class="job-top"><h3>عمال مخازن وتحميل</h3><span class="badge" style="background:#eeeae3;color:#777">قريبًا</span></div>
+                        <div class="job-company">📦 قطاع التوزيع والمستودعات</div>
+                        <div class="meta">
+                            <div>📍 حسب الفرصة المتاحة</div>
+                            <div>👤 الخبرة: لا تشترط خبرة</div>
+                            <div>💰 الراتب: يحدد حسب الشركة</div>
+                            <div>📞 التواصل: بعد مراجعة البيانات</div>
+                        </div>
+                        <button class="btn btn-light details-btn" data-job-id="3">عرض التفاصيل ←</button>
+                    </article>
+                </div>
+                <p id="noJobs" style="display:none;text-align:center;color:var(--muted);padding:25px">لا توجد وظيفة مطابقة للبحث.</p>
+            </div>
+        </section>
+
+        <!-- تفاصيل الوظيفة (Modal) -->
+        <div class="modal" id="jobModal" aria-hidden="true">
+            <div class="modal-backdrop" id="modalBackdrop"></div>
+            <div class="modal-box">
+                <button class="modal-close" id="modalClose" aria-label="إغلاق">×</button>
+                <div class="modal-icon">🏭</div>
+                <span class="badge" id="modalBadge">متاح الآن</span>
+                <h2 id="modalTitle">عامل تعبئة وتغليف</h2>
+                <p class="modal-company" id="modalCompany">مصنع إنتاج</p>
+                <div class="detail-list" id="modalDetails"></div>
+                <div class="modal-note">📌 جميع الفرص المتاحة خالية من أي رسوم وساطة للتوظيف.</div>
+                <button class="btn btn-gold" id="modalApply">📝 التقديم على الوظيفة الآن</button>
+            </div>
         </div>
-      </div>
-    </section>
 
-    <section class="jobs-section" id="jobs">
-      <div class="container">
-        <div class="section-head">
-          <div class="label">الفرص المتاحة</div>
-          <h2>اختار الوظيفة المناسبة ليك</h2>
-          <p>ابحث وفلتر الوظائف، واضغط على أي وظيفة لمعرفة التفاصيل والتقديم.</p>
+        <!-- استمارة التسجيل -->
+        <section id="register">
+            <div class="container register-wrap">
+                <aside class="info-card">
+                    <h3>جاهز تبدأ؟</h3>
+                    <p>سجّل بياناتك في دقائق معدودة. كل ما كانت بياناتك دقيقة، كان من الأسهل مطابقة ملفك مع الفرص المناسبة في المصانع.</p>
+                    <ul class="info-points">
+                        <li>✓ الاسم ورقم الواتساب للتواصل</li>
+                        <li>✓ السن والمحافظة وموقف التجنيد</li>
+                        <li>✓ تحديد الوظيفة والاحتياج للسكن</li>
+                        <li>✓ مجاني بالكامل بدون أي رسوم</li>
+                    </ul>
+                </aside>
+
+                <div class="form-card">
+                    <h2 class="form-title">📝 استمارة تسجيل بيانات العامل</h2>
+                    <p class="form-sub">املأ البيانات التالية بدقة وسيتم التواصل معك فور توفر فرصة مناسبة.</p>
+
+                    <form id="registrationForm">
+                        <div class="form-grid">
+                            <div class="field full">
+                                <label for="name">الاسم الثلاثي</label>
+                                <input id="name" name="name" required placeholder="اكتب اسمك كاملًا">
+                            </div>
+
+                            <div class="field">
+                                <label for="whatsapp">رقم الواتساب</label>
+                                <input id="whatsapp" name="whatsapp" required inputmode="tel" placeholder="01xxxxxxxxx">
+                            </div>
+
+                            <div class="field">
+                                <label for="phone">رقم إضافي (اختياري)</label>
+                                <input id="phone" name="phone" inputmode="tel" placeholder="01xxxxxxxxx">
+                            </div>
+
+                            <div class="field">
+                                <label for="age">السن</label>
+                                <input id="age" name="age" type="number" min="18" max="60" required placeholder="اكتب سنك">
+                            </div>
+
+                            <div class="field">
+                                <label for="location">المحافظة / المركز</label>
+                                <input id="location" name="location" required placeholder="مثال: القليوبية - شبرا الخيمة">
+                            </div>
+
+                            <div class="field">
+                                <label for="military">الموقف من التجنيد</label>
+                                <select id="military" name="military" required>
+                                    <option value="">اختر الحالة</option>
+                                    <option>أدى الخدمة</option>
+                                    <option>إعفاء نهائي</option>
+                                    <option>إعفاء مؤقت</option>
+                                    <option>غير مطلوب</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="job">الوظيفة المطلوبة</label>
+                                <select id="job" name="job" required>
+                                    <option value="">اختر الوظيفة</option>
+                                    <option>عامل إنتاج</option>
+                                    <option>عامل تعبئة وتغليف</option>
+                                    <option>عامل مخازن</option>
+                                    <option>سائق</option>
+                                    <option>سائق كلارك</option>
+                                    <option>فني إنتاج</option>
+                                    <option>أمن</option>
+                                    <option>أخرى</option>
+                                </select>
+                            </div>
+
+                            <div class="field full">
+                                <label for="needs">هل تحتاج سكن ومواصلات؟</label>
+                                <select id="needs" name="needs" required>
+                                    <option value="">اختر</option>
+                                    <option>أحتاج سكن ومواصلات</option>
+                                    <option>أحتاج سكن فقط</option>
+                                    <option>أحتاج مواصلات فقط</option>
+                                    <option>لا أحتاج</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn btn-gold" type="submit">🚀 إرسال استمارة التسجيل</button>
+                            <div class="notice">مهم: يمكنك ربط هذا الزر بـ Google Forms أو أي قاعدة بيانات لاستقبال الطلبات.</div>
+                            <div class="success" id="successMsg">✅ تم تسجيل بياناتك بنجاح وجاري مراجعتها للتواصل معك قريباً!</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <strong>شغل فور يو</strong> — <span>فرصتك للشغل تبدأ من هنا</span>
+            <div class="footer-links">جميع الحقوق محفوظة © 2026 شغل فور يو</div>
         </div>
+    </footer>
 
-        <div class="job-tools">
-          <div class="search">
-            <span>🔎</span>
-            <input id="jobSearch" type="search" placeholder="ابحث عن وظيفة أو مكان...">
-          </div>
-          <select id="locationFilter" class="filter">
-            <option value="">كل المحافظات</option>
-            <option value="العاشر من رمضان">العاشر من رمضان</option>
-            <option value="أكتوبر">أكتوبر</option>
-            <option value="العبور">العبور</option>
-          </select>
-          <select id="typeFilter" class="filter">
-            <option value="">كل الوظائف</option>
-            <option value="إنتاج">إنتاج</option>
-            <option value="سائق">سائق</option>
-            <option value="مخازن">مخازن</option>
-          </select>
-        </div>
+    <script>
+        // دالة حاسبة الأجور
+        function calculateSalary() {
+            let basic = parseFloat(document.getElementById('basicSalary').value) || 0;
+            let overtime = parseFloat(document.getElementById('overtimeHours').value) || 0;
+            let shift = document.getElementById('shiftType').value;
+            let deductions = parseFloat(document.getElementById('deductions').value) || 0;
 
-        <div class="job-grid" id="jobGrid">
-          <article class="job" data-search="عامل تعبئة تغليف العاشر رمضان انتاج" data-location="العاشر من رمضان" data-type="إنتاج">
-            <div class="job-top"><h3>عامل تعبئة وتغليف</h3><span class="badge">متاح الآن</span></div>
-            <div class="job-company">🏭 مصنع إنتاج</div>
-            <div class="meta">
-              <div>📍 العاشر من رمضان</div>
-              <div>👤 الخبرة: تقبل بدون خبرة</div>
-              <div>💰 الراتب: حسب المقابلة</div>
-              <div>🏠 السكن والمواصلات: حسب الفرصة</div>
-            </div>
-            <button class="btn btn-primary details-btn" data-job-id="1">عرض التفاصيل والتقديم ←</button>
-          </article>
+نفترض عادةً أن ساعة الإضافي تُحسب بناءً على الأساسي (مثلاً تقدير تقريبي لساعة الإضافي أو حساب أجر الساعة)
+            let hourlyRate = (basic / 30) / 8; 
+            let overtimeTotal = overtime * hourlyRate * 1.35; // نسبة الإضافي
+            
+            if (shift === 'night') {
+                overtimeTotal *= 1.2; // حافز شيفت ليلي إضافي
+            }
 
-          <article class="job" data-search="سائق كلارك فني انتاج اكتوبر العبور" data-location="أكتوبر" data-type="سائق">
-            <div class="job-top"><h3>سائق كلارك / فني إنتاج</h3><span class="badge">متاح الآن</span></div>
-            <div class="job-company">🏭 شركة صناعية</div>
-            <div class="meta">
-              <div>📍 أكتوبر / العبور</div>
-              <div>👤 الخبرة: حسب الوظيفة</div>
-              <div>💰 الراتب: حسب الخبرة</div>
-              <div>🛡️ التأمين: حسب الشركة</div>
-            </div>
-            <button class="btn btn-primary details-btn" data-job-id="2">عرض التفاصيل والتقديم ←</button>
-          </article>
+            let netSalary = (basic + overtimeTotal) - deductions;
 
-          <article class="job" data-search="عمال مخازن مخزن مستودع" data-location="" data-type="مخازن">
-            <div class="job-top"><h3>عمال مخازن</h3><span class="badge muted-badge">قريبًا</span></div>
-            <div class="job-company">📦 قطاع المخازن</div>
-            <div class="meta">
-              <div>📍 حسب الفرصة المتاحة</div>
-              <div>👤 الخبرة: حسب الوظيفة</div>
-              <div>💰 الراتب: يحدد حسب الشركة</div>
-              <div>📞 التواصل: بعد مراجعة البيانات</div>
-            </div>
-            <button class="btn btn-light details-btn" data-job-id="3">عرض التفاصيل ←</button>
-          </article>
-        </div>
-        <p id="noJobs" style="display:none;text-align:center;color:var(--muted);padding:25px">لا توجد وظيفة مطابقة للبحث.</p>
-      </div>
-    </section>
+            let resultBox = document.getElementById('resultBox');
+            let resultText = document.getElementById('finalResultText');
+            
+            resultBox.style.display = 'block';
+            resultText.innerHTML = `${netSalary.toFixed(2)} جنيه مصري <br><span style="font-size:13px; color:#cbd5e1; font-weight:normal;">(شامل الأساسي والإضافي والشيفت بعد خصم الجزاءات)</span>`;
+        }
 
-    <div class="modal" id="jobModal" aria-hidden="true">
-      <div class="modal-backdrop" id="modalBackdrop"></div>
-      <div class="modal-box">
-        <button class="modal-close" id="modalClose" aria-label="إغلاق">×</button>
-        <div class="modal-icon">🏭</div>
-        <span class="badge" id="modalBadge">متاح الآن</span>
-        <h2 id="modalTitle">عامل تعبئة وتغليف</h2>
-        <p class="modal-company" id="modalCompany">مصنع إنتاج</p>
-        <div class="detail-list" id="modalDetails"></div>
-        <div class="modal-note">📌 بيانات الوظائف المعروضة قابلة للتحديث حسب احتياج الشركة.</div>
-        <button class="btn btn-gold" id="modalApply">📝 التقديم على الوظيفة</button>
-      </div>
-    </div>
+        // قائمة الموبايل التناظرية
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        menuBtn.addEventListener('click', () => navLinks.classList.toggle('show'));
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('show')));
 
-    <section id="register">
-      <div class="container register-wrap">
-        <aside class="info-card">
-          <h3>جاهز تبدأ؟</h3>
-          <p>سجّل بياناتك في دقائق. كل ما كانت بياناتك دقيقة، كان من الأسهل مطابقة ملفك مع الفرص المناسبة.</p>
-          <ul class="info-points">
-            <li>✓ الاسم وبيانات التواصل</li>
-            <li>✓ المحافظة والسن</li>
-            <li>✓ الوظيفة المطلوبة</li>
-            <li>✓ السكن والمواصلات</li>
-          </ul>
-        </aside>
+        // البحث والفلترة للوظائف
+        const search = document.getElementById('jobSearch');
+        const jobs = [...document.querySelectorAll('.job')];
+        const noJobs = document.getElementById('noJobs');
+        const locationFilter = document.getElementById('locationFilter');
+        const typeFilter = document.getElementById('typeFilter');
 
-        <div class="form-card">
-          <h2 class="form-title">📝 استمارة تسجيل بيانات العامل</h2>
-          <p class="form-sub">املأ البيانات التالية بدقة. الحقول الأساسية مطلوبة.</p>
+        function filterJobs(){
+            const q = search.value.trim().toLowerCase();
+            const loc = locationFilter.value;
+            const type = typeFilter.value;
+            let visible = 0;
+            jobs.forEach(job => {
+                const matchQ = job.dataset.search.toLowerCase().includes(q);
+                const matchLoc = !loc || job.dataset.location.includes(loc);
+                const matchType = !type || job.dataset.type === type;
+                const show = matchQ && matchLoc && matchType;
+                job.style.display = show ? '' : 'none';
+                if(show) visible++;
+            });
+            noJobs.style.display = visible ? 'none' : 'block';
+        }
+        search.addEventListener('input', filterJobs);
+        locationFilter.addEventListener('change', filterJobs);
+        typeFilter.addEventListener('change', filterJobs);
 
-          <form id="registrationForm">
-            <div class="form-grid">
-              <div class="field full">
-                <label for="name">الاسم الثلاثي</label>
-                <input id="name" name="name" required placeholder="اكتب اسمك كاملًا">
-              </div>
+        // تفاصيل الوظائف والنافذة المنبثقة (Modal)
+        const jobSelect = document.getElementById('job');
+        const jobData = {
+            1: {title:'عامل تعبئة وتغليف', company:'مصنع إنتاج وتغليف', badge:'متاح الآن', type:'إنتاج',
+                details:['📍 المكان: العاشر من رمضان','👤 الخبرة: تقبل بدون خبرة','💰 الراتب: 6500 - 7500 جنيه','🏠 السكن: متاح للمغتربين','🚌 المواصلات: متاح اتوبيسات','🕐 الورديات: متغيرة']},
+            2: {title:'سائق كلارك / فني إنتاج', company:'شركة صناعية كبرى', badge:'متاح الآن', type:'سائق',
+                details:['📍 المكان: أكتوبر / العبور','👤 الخبرة: سنة على الأقل','💰 الراتب: حسب المقابلة','🛡️ التأمين: شامل التأمين','🏠 السكن: حسب الفرصة','🚌 المواصلات: متوفرة']},
+            3: {title:'عمال مخازن وتحميل', company:'قطاع التوزيع والمستودعات', badge:'قريبًا', type:'مخازن',
+                details:['📍 المكان: حسب الفرصة','👤 الخبرة: لا تشترط خبرة','💰 الراتب: يحدد لاحقاً','📦 طبيعة العمل: مخازن','🏠 السكن: حسب الفرصة','🚌 المواصلات: حسب الفرصة']}
+        };
 
-              <div class="field">
-                <label for="whatsapp">رقم الواتساب</label>
-                <input id="whatsapp" name="whatsapp" required inputmode="tel" placeholder="01xxxxxxxxx">
-              </div>
+        const modal = document.getElementById('jobModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalCompany = document.getElementById('modalCompany');
+        const modalBadge = document.getElementById('modalBadge');
+        const modalDetails = document.getElementById('modalDetails');
+        let selectedJob = '';
 
-              <div class="field">
-                <label for="phone">رقم إضافي (اختياري)</label>
-                <input id="phone" name="phone" inputmode="tel" placeholder="01xxxxxxxxx">
-              </div>
+        function openJob(id){
+            const job = jobData[id];
+            if(!job) return;
+            selectedJob = job.title;
+            modalTitle.textContent = job.title;
+            modalCompany.textContent = job.company;
+            modalBadge.textContent = job.badge;
+            modalDetails.innerHTML = job.details.map(x => `<div class="detail-item">${x}</div>`).join('');
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden','false');
+            document.body.style.overflow='hidden';
+        }
+        function closeJob(){
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden','true');
+            document.body.style.overflow='';
+        }
+        document.querySelectorAll('.details-btn').forEach(btn => btn.addEventListener('click', () => openJob(btn.dataset.jobId)));
+        document.getElementById('modalClose').addEventListener('click', closeJob);
+        document.getElementById('modalBackdrop').addEventListener('click', closeJob);
+        document.addEventListener('keydown', e => { if(e.key === 'Escape') closeJob(); });
+        
+        document.getElementById('modalApply').addEventListener('click', () => {
+            const option = [...jobSelect.options].find(o => o.text.includes(selectedJob.split(' / ')[0]));
+            if(option) jobSelect.value = option.value;
+            closeJob();
+            document.getElementById('register').scrollIntoView({behavior:'smooth'});
+        });
 
-              <div class="field">
-                <label for="age">السن</label>
-                <input id="age" name="age" type="number" min="15" max="70" required placeholder="اكتب سنك">
-              </div>
-
-              <div class="field">
-                <label for="location">المحافظة / المركز</label>
-                <input id="location" name="location" required placeholder="مثال: القليوبية - شبرا الخيمة">
-              </div>
-
-              <div class="field">
-                <label for="military">الموقف من التجنيد</label>
-                <select id="military" name="military" required>
-                  <option value="">اختر الحالة</option>
-                  <option>أدى الخدمة</option>
-                  <option>إعفاء نهائي</option>
-                  <option>إعفاء مؤقت</option>
-                  <option>لم يحدد الموقف بعد</option>
-                  <option>غير مطلوب</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="job">الوظيفة المطلوبة</label>
-                <select id="job" name="job" required>
-                  <option value="">اختر الوظيفة</option>
-                  <option>عامل إنتاج</option>
-                  <option>عامل تعبئة وتغليف</option>
-                  <option>عامل مخازن</option>
-                  <option>سائق</option>
-                  <option>سائق كلارك</option>
-                  <option>فني إنتاج</option>
-                  <option>أمن</option>
-                  <option>أخرى</option>
-                </select>
-              </div>
-
-              <div class="field full">
-                <label for="needs">هل تحتاج سكن ومواصلات؟</label>
-                <select id="needs" name="needs" required>
-                  <option value="">اختر</option>
-                  <option>أحتاج سكن ومواصلات</option>
-                  <option>أحتاج سكن فقط</option>
-                  <option>أحتاج مواصلات فقط</option>
-                  <option>لا أحتاج</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-actions">
-              <button class="btn btn-gold" type="submit">🚀 إرسال استمارة التسجيل</button>
-              <div class="notice">مهم: هذا التصميم جاهز للواجهة. اربط زر الإرسال بقاعدة البيانات أو Google Forms قبل النشر الفعلي.</div>
-              <div class="success" id="successMsg">✅ تم التحقق من البيانات على الصفحة. الخطوة التالية هي ربط الإرسال بقاعدة البيانات/Google Forms.</div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <strong>شغل فور يو</strong> — <span>فرصتك للشغل تبدأ من هنا</span>
-      <div class="footer-links">جميع الحقوق محفوظة © 2026 شغل فور يو</div>
-    </div>
-  </footer>
-
-  <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => navLinks.classList.toggle('show'));
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('show')));
-
-    // ---------- salary calculator ----------
-    function calculateSalary(){
-      const basic = parseFloat(document.getElementById('basicSalary').value) || 0;
-      const overtimeHours = parseFloat(document.getElementById('overtimeHours').value) || 0;
-      const shiftType = document.getElementById('shiftType').value;
-      const deductions = parseFloat(document.getElementById('deductions').value) || 0;
-
-      if (basic <= 0) {
-        alert('من فضلك اكتب المرتب الأساسي أولاً.');
-        return;
-      }
-
-      const monthlyHours = 240; // 30 يوم × 8 ساعات (تقديري)
-      const hourlyRate = basic / monthlyHours;
-      const overtimeMultiplier = shiftType === 'night' ? 1.70 : 1.35;
-      const overtimePay = overtimeHours * hourlyRate * overtimeMultiplier;
-      const net = basic + overtimePay - deductions;
-
-      document.getElementById('finalResultText').innerHTML =
-        'الأساسي: ' + basic.toFixed(0) + ' ج.م<br>' +
-        'قيمة الإضافي (' + overtimeHours + ' ساعة): ' + overtimePay.toFixed(0) + ' ج.م<br>' +
-        'الخصومات: ' + deductions.toFixed(0) + ' ج.م<br>' +
-        '<strong>صافي المرتب التقريبي: ' + net.toFixed(0) + ' ج.م</strong>';
-
-      const box = document.getElementById('resultBox');
-      box.style.display = 'block';
-      box.scrollIntoView({behavior:'smooth', block:'center'});
-    }
-
-    // ---------- jobs: search + filter ----------
-    const search = document.getElementById('jobSearch');
-    const jobs = [...document.querySelectorAll('.job')];
-    const noJobs = document.getElementById('noJobs');
-    const locationFilter = document.getElementById('locationFilter');
-    const typeFilter = document.getElementById('typeFilter');
-
-    function filterJobs(){
-      const q = search.value.trim().toLowerCase();
-      const loc = locationFilter.value;
-      const type = typeFilter.value;
-      let visible = 0;
-      jobs.forEach(job => {
-        const matchQ = job.dataset.search.toLowerCase().includes(q);
-        const matchLoc = !loc || job.dataset.location.includes(loc);
-        const matchType = !type || job.dataset.type === type;
-        const show = matchQ && matchLoc && matchType;
-        job.style.display = show ? '' : 'none';
-        if (show) visible++;
-      });
-      noJobs.style.display = visible ? 'none' : 'block';
-    }
-    search.addEventListener('input', filterJobs);
-    locationFilter.addEventListener('change', filterJobs);
-    typeFilter.addEventListener('change', filterJobs);
-
-    // ---------- job details modal ----------
-    const jobSelect = document.getElementById('job');
-    const jobData = {
-      1: {title:'عامل تعبئة وتغليف', company:'مصنع إنتاج', badge:'متاح الآن',
-          details:['📍 المكان: العاشر من رمضان','👤 الخبرة: تقبل بدون خبرة','💰 الراتب: حسب المقابلة','🏠 السكن: حسب الفرصة','🚌 المواصلات: حسب الفرصة','🕐 الورديات: حسب احتياج المصنع']},
-      2: {title:'سائق كلارك / فني إنتاج', company:'شركة صناعية', badge:'متاح الآن',
-          details:['📍 المكان: أكتوبر / العبور','👤 الخبرة: حسب الوظيفة','💰 الراتب: حسب الخبرة','🛡️ التأمين: حسب الشركة','🏠 السكن: حسب الفرصة','🚌 المواصلات: حسب الفرصة']},
-      3: {title:'عمال مخازن', company:'قطاع المخازن', badge:'قريبًا',
-          details:['📍 المكان: حسب الفرصة المتاحة','👤 الخبرة: حسب الوظيفة','💰 الراتب: يحدد حسب الشركة','📦 طبيعة العمل: مخازن','🏠 السكن: حسب الفرصة','🚌 المواصلات: حسب الفرصة']}
-    };
-
-    const modal = document.getElementById('jobModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalCompany = document.getElementById('modalCompany');
-    const modalBadge = document.getElementById('modalBadge');
-    const modalDetails = document.getElementById('modalDetails');
-    let selectedJob = '';
-
-    function openJob(id){
-      const job = jobData[id];
-      if (!job) return;
-      selectedJob = job.title;
-      modalTitle.textContent = job.title;
-      modalCompany.textContent = job.company;
-      modalBadge.textContent = job.badge;
-      modalDetails.innerHTML = job.details.map(x => '<div class="detail-item">' + x + '</div>').join('');
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeJob(){
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-    document.querySelectorAll('.details-btn').forEach(btn => btn.addEventListener('click', () => openJob(btn.dataset.jobId)));
-    document.getElementById('modalClose').addEventListener('click', closeJob);
-    document.getElementById('modalBackdrop').addEventListener('click', closeJob);
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeJob(); });
-    document.getElementById('modalApply').addEventListener('click', () => {
-      const option = [...jobSelect.options].find(o => o.text.includes(selectedJob.split(' / ')[0]));
-      if (option) jobSelect.value = option.value;
-      closeJob();
-      document.getElementById('register').scrollIntoView({behavior:'smooth'});
-    });
-
-    // ---------- registration form ----------
-    document.getElementById('registrationForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const phone = document.getElementById('whatsapp').value.replace(/\s|-/g, '');
-      if (!/^01\d{9}$/.test(phone)) {
-        alert('من فضلك اكتب رقم واتساب مصري صحيح مكوّن من 11 رقمًا.');
-        document.getElementById('whatsapp').focus();
-        return;
-      }
-      document.getElementById('successMsg').style.display = 'block';
-      document.getElementById('successMsg').scrollIntoView({behavior:'smooth', block:'center'});
-    });
-  </script>
+        // التحقق من رقم الواتساب عند إرسال الاستمارة
+        document.getElementById('registrationForm').addEventListener('submit', function(e){
+            e.preventDefault();
+            const phone = document.getElementById('whatsapp').value.replace(/\s|-/g,'');
+            if(!/^01\d{9}$/.test(phone)){
+                alert('من فضلك اكتب رقم واتساب مصري صحيح مكوّن من 11 رقمًا يبدأ بـ 01.');
+                document.getElementById('whatsapp').focus();
+                return;
+            }
+            document.getElementById('successMsg').style.display = 'block';
+            document.getElementById('successMsg').scrollIntoView({behavior:'smooth', block:'center'});
+        });
+    </script>
 </body>
 </html>
