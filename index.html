@@ -474,6 +474,19 @@
                                 <input id="age" name="age" type="number" min="18" max="60" required placeholder="اكتب سنك">
                             </div>
 
+                            </div>
+
+                <div class="form-group">
+                    <label for="المؤهل">المؤهل الدراسي:</label>
+                    <select id="المؤهل" name="المؤهل" required>
+                        <option value="">اختر المؤهل الدراسي</option>
+                        <option value="بدون مؤهل / يقرأ ويحكتب">بدون مؤهل / يقرأ ويكتب</option>
+                        <option value="مؤهل متوسط (دبلوم صناعة/تجارة/زراعة)">مؤهل متوسط (دبلوم صناعة/تجارة/زراعة)</option>
+                        <option value="مؤهل فوق المتوسط">مؤهل فوق المتوسط</option>
+                        <option value="مؤهل عالي (خريج جامعة)">مؤهل عالي (خريج جامعة)</option>
+                    </select>
+              </div>
+                            
                             <div class="field">
                                 <label for="location">المحافظة / المركز</label>
                                 <input id="location" name="location" required placeholder="مثال: القليوبية - شبرا الخيمة">
@@ -504,7 +517,31 @@
                                     <option>أخرى</option>
                                 </select>
                             </div>
+           </div>
 
+                <div class="form-group">
+                    <label for="سنوات_الخبرة">سنوات الخبرة:</label>
+                    <select id="سنوات_الخبرة" name="سنوات_الخبرة" required>
+                        <option value="">اختر خبرتك</option>
+                        <option value="بدون خبرة (حديث التخرج)">بدون خبرة (حديث التخرج)</option>
+                        <option value="من سنة إلى سنتين">من سنة إلى سنتين</option>
+                        <option value="من 3 إلى 5 سنوات">من 3 إلى 5 سنوات</option>
+                        <option value="أكثر من 5 سنوات (محترف)">أكثر من 5 سنوات (محترف)</option>
+                    </select>
+                </div>
+
+<div class="form-group">
+                    <label for="الكورسات">كورسات أو دورات تدريبية (إن وجدت):</label>
+                    <input type="text" id="الكورسات" name="الكورسات" placeholder="مثال: لغة، كمبيوتر، أمان صناعي...">
+                </div>
+
+                <div class="form-group">
+                    <label for="المرتب_المتوقع">المرتب المتوقع (بالجنيه):</label>
+                    <input type="number" id="المرتب_المتوقع" name="المرتب_المتوقع" placeholder="مثال: 6000">
+                </div>
+
+
+                        
                             <div class="field full">
                                 <label for="needs">هل تحتاج سكن ومواصلات؟</label>
                                 <select id="needs" name="needs" required>
