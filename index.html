@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="شغل فور يو - بوابة مجانية للتسجيل في فرص العمل بالمصانع والشركات، مع حاسبة أجور مجانية.">
   <title>شغل فور يو | فرص العمل تبدأ من هنا</title>
-  <style>
-    :root{
+ <script>
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycb3t41wM5tUYPdnFMpTkuVvk-_zYKVs0q3w6DNTuG1HX1PIYY_F51Mkzi3KftxCFopW0A/exec";
+</script>
+<style>{
       --navy:#102746;
       --navy-2:#18385f;
       --gold:#c99a3b;
@@ -790,18 +792,35 @@
     });
 
     // ============ الإعدادات: عدّل القيم دي فقط ============
-    const WA_NUMBER = "201000000000";   // رقم الواتساب بالصيغة الدولية بدون + (مثال: 2010xxxxxxxx)
-    const PHONE_TEXT = "01000000000";   // الرقم اللي يظهر للزوار
-    const SCRIPT_URL = "";              // رابط Google Apps Script (ينتهي بـ /exec)
+    const WA_NUMBER = "20155697701";   // رقم الواتساب بالصيغة الدولية بدون + (مثال: 2010xxxxxxxx)
+    const PHONE_TEXT = "0155697701";   // الرقم اللي يظهر للزوار
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3t41wM5tUYPdnFMpTkuVvk-_zYkVs0q3w6DNtuG1HX1PlYY_F51Mkzi3KftxCFopW0A/exec";              // رابط Google Apps Script (ينتهي بـ /exec)
     // ======================================================
 
     const scriptReady = () => SCRIPT_URL.startsWith("https://script.google.com/");
 
-    // روابط الواتساب والاتصال
-    const waLink = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent("السلام عليكم، كنت عايز أستفسر عن فرص الشغل المتاحة");
-    document.querySelectorAll("[data-wa]").forEach(a => { a.href = waLink; });
-    document.querySelectorAll("[data-tel]").forEach(a => { a.href = "tel:+" + WA_NUMBER; });
-    document.querySelectorAll("[data-phone-text]").forEach(el => { el.textContent = PHONE_TEXT; });
+// روابط الواتساب والاتصال
+const waLink = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent("السلام عليكم، مهتم بالفرص المتاحة");
+document.querySelectorAll("[data-tel]").forEach(a => { a.href = "tel:+" + WA_NUMBER; });
+document.querySelectorAll("[data-phone-text]").forEach(el => { el.textContent = PHONE_TEXT; });
+
+// تحديد مواعيد استقبال الرسائل (من 10 صباحاً حتى 10 مساءً)
+const startHour = 10; // 10 صباحاً
+const endHour = 22;   // 10 مساءً
+
+document.querySelectorAll("[data-wa]").forEach(a => {
+  a.addEventListener("click", function(e) {
+    const currentHour = new Date().getHours();
+    
+    // فحص لو الوقت بره المواعيد (قبل 10 الصبح أو بعد 10 بالليل)
+    if (currentHour < startHour || currentHour >= endHour) {
+      e.preventDefault(); // منع فتح الواتساب
+      alert("عفواً، استقبال رسائل الواتساب متاح من الساعة 10 صباحاً حتى 10 مساءً فقط. يمكنك ملء استمارة التقديم الآن وسنتواصل معك!");
+    } else {
+      a.href = waLink; // فتح الواتساب طبيعي خلال المواعيد
+    }
+  });
+});
 
     // ---------- عداد الزوار ----------
     (function trackVisits(){
